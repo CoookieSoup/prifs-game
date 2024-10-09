@@ -18,13 +18,13 @@ public class Object_test_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        float moveHorizontal = Input.GetAxisRaw("Horizontal"); //Did not use GetAxis, because it has values besides 0 1 -1 and that makes the movement slugish
         float moveVertical = Input.GetAxisRaw("Vertical");
         if (moveVertical != 0 && moveHorizontal != 0)
         {
-            moveVertical /= Mathf.Sqrt(2);
+            moveVertical /= Mathf.Sqrt(2);  //Needed else player moves sqrt(2) * speed while moving diagonally which feels unnatural
             moveHorizontal /= Mathf.Sqrt(2);
         }
-        rigid_body_player.velocity = new Vector2(moveHorizontal * speed, moveVertical * speed);
+        rigid_body_player.velocity = new Vector2(moveHorizontal * speed, moveVertical * speed); //Apply movement
     }
 }

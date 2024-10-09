@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class projectile_logic : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
+            Destroy(gameObject);
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //Destroy(collision.gameObject);
-        if (collision.gameObject.tag != "Boss" && collision.gameObject.tag != "Projectile")
-        Destroy(gameObject);
+        
     }
-    // Update is called once per frame
     void Update()
     {
         
