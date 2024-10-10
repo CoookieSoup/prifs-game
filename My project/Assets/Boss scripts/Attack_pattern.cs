@@ -21,6 +21,7 @@ public class Attack_pattern : MonoBehaviour
 
     void Update()
     {
+        isPhase2 = true;
         if (boss_health <= 500)
         {
             isPhase2 = true;
