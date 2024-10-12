@@ -13,12 +13,5 @@ public class projectile_logic : MonoBehaviour
         if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
             Destroy(gameObject);
     }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
+
 }
