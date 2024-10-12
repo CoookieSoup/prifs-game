@@ -34,14 +34,27 @@ public class Bomb_projectile_script : MonoBehaviour
         if (explode_cooldown < 0)
         {
             int spawnAngle = 0;
-            for (int i = 0; i < 12; i++)
+            if (!golem_script.isPhase2)
+            for (int i = 0; i < 8; i++)
             {
                 float radians = spawnAngle * Mathf.Deg2Rad;
-                var BouncyProjectile1 = Instantiate(bouncy_projectile, transform.position, transform.rotation);
-                Vector2 movementDirection1 = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
-                BouncyProjectile1.GetComponent<Rigidbody2D>().velocity = movementDirection1 * golem_script.bomb_projectile_speed;
-                spawnAngle += 30;
+                var BouncyProjectile = Instantiate(bouncy_projectile, transform.position, transform.rotation);
+                Vector2 movementDirection = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
+                BouncyProjectile.GetComponent<Rigidbody2D>().velocity = movementDirection * golem_script.bomb_projectile_speed;
+                spawnAngle += 45;
 
+            }
+            else
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    float radians = spawnAngle * Mathf.Deg2Rad;
+                    var BouncyProjectile = Instantiate(bouncy_projectile, transform.position, transform.rotation);
+                    Vector2 movementDirection = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
+                    BouncyProjectile.GetComponent<Rigidbody2D>().velocity = movementDirection * golem_script.bomb_projectile_speed;
+                    spawnAngle += 36;
+
+                }
             }
             Destroy(gameObject);
         }

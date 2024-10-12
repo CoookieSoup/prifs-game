@@ -11,6 +11,14 @@ public class Golem_moveset : MonoBehaviour
     public bool isPhase2;
     public int max_golem_health;
     private int current_golem_health;
+    public Rigidbody2D golem_rigidbody2D;
+    public float golem_speed;
+    public Transform golem_transform;
+
+    private bool have_pillars_spawned = false;
+    public GameObject pillar;
+    public float pillar_spawn_telegraph_timer = 0;
+    public bool have_pillar_telegraph_spawned = false;
 
     //Projectiles
     public GameObject projectile;
@@ -25,28 +33,53 @@ public class Golem_moveset : MonoBehaviour
     private float bomb_projectile_spawn_timer = 0;
 
     //Attack Booleans
-    private bool isBombAttack1 = false;
-    private bool isCircularAttack1 = false;
+    //private bool isBombAttack1 = false;
+    //private bool isCircularAttack1 = false;
 
     private void Start()
     {
+        golem_rigidbody2D = GetComponent<Rigidbody2D>();
         current_golem_health = max_golem_health;
     }
     void Update()
     {
-        if (current_golem_health < max_golem_health)
+        if (current_golem_health < max_golem_health/2)
             isPhase2 = true;
         timer += Time.deltaTime;
 
-        if (timer >= 0f)
+        if (20 > timer && timer >= 0f)
         {
-            isBombAttack1 = true;
-        }
-
-        if (isCircularAttack1)
-            CircularAttack1();
-        if (isBombAttack1)
             BombAttack1();
+        }
+        if (47 > timer && timer >= 27)
+        {
+            CircularAttack1();
+        }
+        GolemMovement();
+        if (isPhase2 && !have_pillars_spawned)
+        {
+            /*
+            if (!have_pillar_telegraph_spawned)
+            {
+                var Telegraph_Pillar1 = Instantiate(telegraph_pillar, new Vector2(5, 2), transform.rotation);
+                var Telegraph_Pillar2 = Instantiate(telegraph_pillar, new Vector2(-5, 2), transform.rotation);
+                var Telegraph_Pillar3 = Instantiate(telegraph_pillar, new Vector2(5, -2), transform.rotation);
+                var Telegraph_Pillar4 = Instantiate(telegraph_pillar, new Vector2(-5, -2), transform.rotation);
+                have_pillar_telegraph_spawned = true;
+            }
+            */
+            
+            pillar_spawn_telegraph_timer += Time.deltaTime;
+            if (pillar_spawn_telegraph_timer >= 5)
+            {
+                have_pillars_spawned = true;
+                var Pillar1 = Instantiate(pillar, new Vector2(5, 2), transform.rotation);
+                var Pillar2 = Instantiate(pillar, new Vector2(-5, 2), transform.rotation);
+                var Pillar3 = Instantiate(pillar, new Vector2(5, -2), transform.rotation);
+                var Pillar4 = Instantiate(pillar, new Vector2(-5, -2), transform.rotation);
+                //Destroy(Telegraph_Pillar1, Telegraph_Pillar2, Telegraph_Pillar3, Telegraph_Pillar4);
+            }
+        }
     }
 
     void CircularAttack1()
@@ -81,9 +114,16 @@ public class Golem_moveset : MonoBehaviour
         {
             bomb_projectile_spawn_timer = 0f;
             var BombProjectile1 = Instantiate(Bomb_projectile, transform.position, transform.rotation);  //Projectile spawning
-            Vector2 movementDirection = new Vector2(player_transform.position.x - transform.position.x, player_transform.position.y - transform.position.y);
-            movementDirection.Normalize();
-            BombProjectile1.GetComponent<Rigidbody2D>().velocity = movementDirection * bomb_projectile_speed;
+            Vector2 movementDirection = new Vector2(player_transform.position.x - transform.position.x, player_transform.position.y - transform.position.y); //Direction to player
+            movementDirection.Normalize(); //Made to length 1 so it doesnt affect speed
+            BombProjectile1.GetComponent<Rigidbody2D>().velocity = movementDirection * bomb_projectile_speed; //Speed applied
         }
+    }
+
+    void GolemMovement()
+    {
+        Vector2 movementDirection = new Vector2(player_transform.position.x - golem_transform.position.x, player_transform.position.y - golem_transform.position.y); //Direction to player
+        movementDirection.Normalize(); //Made to length 1 so it doesnt affect speed
+        golem_rigidbody2D.velocity = movementDirection * golem_speed; //Speed applied
     }
 }

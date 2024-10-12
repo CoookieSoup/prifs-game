@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4706541425941748386}
   - component: {fileID: 3308417704038553045}
   - component: {fileID: -8601852541871574718}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Bouncy Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -163,6 +163,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bouncy_projectile_rigidBody2D: {fileID: 4706541425941748386}
   bouncy_projectile_transform: {fileID: 6236277764168623078}
-  has_Bounced: 0
-  golem_boss_script: {fileID: 0}
-  golem_boss_gameObject: {fileID: 0}
