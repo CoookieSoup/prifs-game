@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15438890e6002b34da5e822209df86e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 3
 --- !u!61 &152800717
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -589,16 +589,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6aa4ce2ca8145c448b87abdb4b881c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 3963257693850774111, guid: a76905272d3bf124e8dedc598f0c56e8, type: 3}
-  Bouncy_projectile: {fileID: 3963257693850774111, guid: 3e33350b2074cee4d94593155a6ef98d, type: 3}
   player_transform: {fileID: 152800715}
+  isPhase2: 1
+  max_golem_health: 100
+  projectile: {fileID: 3963257693850774111, guid: a76905272d3bf124e8dedc598f0c56e8, type: 3}
+  Bomb_projectile: {fileID: 3963257693850774111, guid: d26bbbcbce513fa4281dd65cf8cf48ec, type: 3}
   projectile_speed: 3
-  bouncy_projectile_speed: 1
+  bomb_projectile_speed: 2
+  bomb_projectile_spawn_interval: 2
   projectile_spawn_interval: 0.1
   consequetive_projectile_angle_degrees: 12
-  isPhase2: 1
-  isTest1: 1
-  isTest2: 0
 --- !u!50 &1213986686
 Rigidbody2D:
   serializedVersion: 4
@@ -655,7 +655,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

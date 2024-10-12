@@ -2,48 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack_pattern : MonoBehaviour
+public class Golem_moveset : MonoBehaviour
 {
     
     
     public Transform player_transform;
     private float timer = 0f;
     public bool isPhase2;
+    public int max_golem_health;
+    private int current_golem_health;
 
     //Projectiles
     public GameObject projectile;
-    public GameObject Bouncy_projectile;
+    public GameObject Bomb_projectile;
     private int spawnAngle = 0;
     public float projectile_speed;
-    public float bouncy_projectile_speed;
-    public float bouncy_projectile_spawn_interval;
+    public float bomb_projectile_speed;
+    public float bomb_projectile_spawn_interval;
     public float projectile_spawn_interval;
     public int consequetive_projectile_angle_degrees;
     private float projectile_spawn_timer = 0;
-    private float bouncy_projectile_spawn_timer = 0;
+    private float bomb_projectile_spawn_timer = 0;
 
     //Attack Booleans
-    //private bool isBounceAttack1 = false;
-    //private bool isCircularAttack1 = false;
+    private bool isBombAttack1 = false;
+    private bool isCircularAttack1 = false;
 
-    //testing
-    public bool isTest1;
-    public bool isTest2;
-    void Start()
+    private void Start()
     {
+        current_golem_health = max_golem_health;
     }
-
-
     void Update()
     {
-
+        if (current_golem_health < max_golem_health)
+            isPhase2 = true;
         timer += Time.deltaTime;
-        if (isTest1)
-            CircularAttack1();
-        if (isTest2)
-            BounceAttack1();
-    }
 
+        if (timer >= 0f)
+        {
+            isBombAttack1 = true;
+        }
+
+        if (isCircularAttack1)
+            CircularAttack1();
+        if (isBombAttack1)
+            BombAttack1();
+    }
 
     void CircularAttack1()
     {
@@ -70,17 +74,16 @@ public class Attack_pattern : MonoBehaviour
             spawnAngle += consequetive_projectile_angle_degrees; //Next projectile spawn angle (to make circular spawning possible)
         }
     }
-    void BounceAttack1()
+    void BombAttack1()
     {
-        
-        bouncy_projectile_spawn_timer += Time.deltaTime;
-        if (bouncy_projectile_spawn_timer > bouncy_projectile_spawn_interval)
+        bomb_projectile_spawn_timer += Time.deltaTime;
+        if (bomb_projectile_spawn_timer > bomb_projectile_spawn_interval)
         {
-            bouncy_projectile_spawn_timer = 0f;
-            var BouncyProjectile1 = Instantiate(Bouncy_projectile, transform.position, transform.rotation);  //Projectile spawning
+            bomb_projectile_spawn_timer = 0f;
+            var BombProjectile1 = Instantiate(Bomb_projectile, transform.position, transform.rotation);  //Projectile spawning
             Vector2 movementDirection = new Vector2(player_transform.position.x - transform.position.x, player_transform.position.y - transform.position.y);
             movementDirection.Normalize();
-            BouncyProjectile1.GetComponent<Rigidbody2D>().velocity = movementDirection * bouncy_projectile_speed;
+            BombProjectile1.GetComponent<Rigidbody2D>().velocity = movementDirection * bomb_projectile_speed;
         }
     }
 }

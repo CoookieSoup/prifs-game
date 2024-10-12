@@ -8,9 +8,6 @@ public class Bouncy_projectile_script : MonoBehaviour
     private int max_bounces = 2;
     public Rigidbody2D bouncy_projectile_rigidBody2D;
     public Transform bouncy_projectile_transform;
-    void Start()
-    {
-    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Wall")
@@ -23,9 +20,5 @@ public class Bouncy_projectile_script : MonoBehaviour
         }
         if (collision.gameObject.tag == "Player")
             Destroy(gameObject);
-    }
-    void Update()
-    {
-
     }
 }

@@ -9,13 +9,10 @@ public class Object_test_script : MonoBehaviour
 {
     public float speed; //Can be changed in the Unity editor
     private Rigidbody2D rigid_body_player;
-    // Start is called before the first frame update
     void Start()
     {
         rigid_body_player = GetComponent<Rigidbody2D>();
     }
-    
-    // Update is called once per frame
     void Update()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal"); //Did not use GetAxis, because it has values besides 0 1 -1 and that makes the movement slugish
