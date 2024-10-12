@@ -590,10 +590,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 3963257693850774111, guid: a76905272d3bf124e8dedc598f0c56e8, type: 3}
-  proj_spawnpoint: {fileID: 0}
+  player_transform: {fileID: 152800715}
   projectile_speed: 4
   projectile_spawn_interval: 0.1
   consequetive_projectile_angle_degrees: 12
+  isTest1: 0
+  isTest2: 1
 --- !u!50 &1213986686
 Rigidbody2D:
   serializedVersion: 4
