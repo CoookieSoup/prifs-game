@@ -19,6 +19,7 @@ public class Golem_moveset : MonoBehaviour
     public GameObject pillar;
     public float pillar_spawn_telegraph_timer = 0;
     public bool have_pillar_telegraph_spawned = false;
+    public GameObject telegraph_pillar;
 
     //Projectiles
     public GameObject projectile;
@@ -58,7 +59,6 @@ public class Golem_moveset : MonoBehaviour
         GolemMovement();
         if (isPhase2 && !have_pillars_spawned)
         {
-            /*
             if (!have_pillar_telegraph_spawned)
             {
                 var Telegraph_Pillar1 = Instantiate(telegraph_pillar, new Vector2(5, 2), transform.rotation);
@@ -67,17 +67,17 @@ public class Golem_moveset : MonoBehaviour
                 var Telegraph_Pillar4 = Instantiate(telegraph_pillar, new Vector2(-5, -2), transform.rotation);
                 have_pillar_telegraph_spawned = true;
             }
-            */
             
-            pillar_spawn_telegraph_timer += Time.deltaTime;
-            if (pillar_spawn_telegraph_timer >= 5)
+
+            pillar_spawn_telegraph_timer -= Time.deltaTime;
+            if (pillar_spawn_telegraph_timer <= 0)
             {
                 have_pillars_spawned = true;
                 var Pillar1 = Instantiate(pillar, new Vector2(5, 2), transform.rotation);
                 var Pillar2 = Instantiate(pillar, new Vector2(-5, 2), transform.rotation);
                 var Pillar3 = Instantiate(pillar, new Vector2(5, -2), transform.rotation);
                 var Pillar4 = Instantiate(pillar, new Vector2(-5, -2), transform.rotation);
-                //Destroy(Telegraph_Pillar1, Telegraph_Pillar2, Telegraph_Pillar3, Telegraph_Pillar4);
+
             }
         }
     }
