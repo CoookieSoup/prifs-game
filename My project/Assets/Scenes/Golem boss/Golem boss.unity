@@ -279,8 +279,8 @@ Transform:
   m_GameObject: {fileID: 341643011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.1708, y: 5.12, z: 0}
-  m_LocalScale: {x: 1, y: 20.10317, z: 1}
+  m_LocalPosition: {x: -0.1, y: 5.14, z: 0}
+  m_LocalScale: {x: 1, y: 19, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -371,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -11.93}
+  m_LocalPosition: {x: 0, y: -0.09, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -539,11 +539,10 @@ Transform:
   m_GameObject: {fileID: 1845813304}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.1588, y: -5.03, z: 0}
-  m_LocalScale: {x: 1, y: 19.88702, z: 1}
+  m_LocalPosition: {x: -0.18, y: -5.02, z: 0}
+  m_LocalScale: {x: 1, y: 19, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2089041151}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &1969681658
@@ -671,8 +670,8 @@ Transform:
   m_GameObject: {fileID: 1969681658}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.05, y: 0.02, z: 0}
-  m_LocalScale: {x: 1, y: 10.019855, z: 1}
+  m_LocalPosition: {x: -9.8, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -855,12 +854,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089041147}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -4.9988017, y: 0.5029009, z: 0}
-  m_LocalScale: {x: 0.050284047, y: 10.199515, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.72, y: 0.0000014305115, z: 0}
+  m_LocalScale: {x: 1, y: 12, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1845813308}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3766723067767945036
 PrefabInstance:
@@ -871,6 +870,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: log
+      value: 
+      objectReference: {fileID: 4308721013236243717, guid: f0f306ec1da5c424497ac339c43da94b, type: 3}
+    - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: spike
+      value: 
+      objectReference: {fileID: 708803845450274165, guid: 9345de8891a7ee84db4953d6d44fc985, type: 3}
+    - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
       propertyPath: pillar
       value: 
       objectReference: {fileID: 1206574531242527526, guid: b56c4374cf3167240a60174e2321cb11, type: 3}
@@ -879,13 +886,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: log_speed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
       propertyPath: golem_speed
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: spike_speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
       propertyPath: golem_transform
       value: 
       objectReference: {fileID: 1213986689}
+    - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: bomb_max_bounces
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
       propertyPath: player_transform
       value: 
@@ -894,13 +913,33 @@ PrefabInstance:
       propertyPath: golem_rigidbody2D
       value: 
       objectReference: {fileID: 1213986686}
+    - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: pillar_telegraph_spawn_time
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: pillar_spawn_telegraph_timer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: pillar_telegraph_spawn_timer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: bouncy_projectile_max_bounces
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 486777483190395386, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: have_pillar_telegraph_spawned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 768702421438672523, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
       propertyPath: m_Name
       value: Golem boss
       objectReference: {fileID: 0}
     - target: {fileID: 838296990000448772, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.42
+      value: 6.92
       objectReference: {fileID: 0}
     - target: {fileID: 838296990000448772, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -969,11 +1008,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 828511826888489905, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.86
+      value: -3.01
       objectReference: {fileID: 0}
     - target: {fileID: 828511826888489905, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.99
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 828511826888489905, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1026,3 +1065,4 @@ SceneRoots:
   - {fileID: 341643015}
   - {fileID: 1845813308}
   - {fileID: 3766723067767945036}
+  - {fileID: 2089041151}

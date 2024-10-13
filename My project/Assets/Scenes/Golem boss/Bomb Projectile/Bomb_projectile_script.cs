@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bomb_projectile_script : MonoBehaviour
 {
     private int bounce_amount = 0;
-    private int max_bounces = 2;
     public Rigidbody2D bomb_projectile_rigidBody2D;
     public Transform bomb_projectile_transform;
     public float explode_cooldown;
@@ -20,7 +19,7 @@ public class Bomb_projectile_script : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             bounce_amount++;
-            if (bounce_amount > max_bounces)
+            if (bounce_amount > golem_script.bomb_max_bounces)
             {
                 Destroy(gameObject);
             }
@@ -35,7 +34,7 @@ public class Bomb_projectile_script : MonoBehaviour
         {
             int spawnAngle = 0;
             if (!golem_script.isPhase2)
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++) //Less projectiles for phase 1
             {
                 float radians = spawnAngle * Mathf.Deg2Rad;
                 var BouncyProjectile = Instantiate(bouncy_projectile, transform.position, transform.rotation);
@@ -46,7 +45,7 @@ public class Bomb_projectile_script : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 10; i++) //More projectiles for phase 2
                 {
                     float radians = spawnAngle * Mathf.Deg2Rad;
                     var BouncyProjectile = Instantiate(bouncy_projectile, transform.position, transform.rotation);
