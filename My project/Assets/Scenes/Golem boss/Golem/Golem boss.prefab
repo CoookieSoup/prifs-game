@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2634154764965428733}
   - component: {fileID: 8416843537281631868}
   - component: {fileID: 486777483190395386}
+  - component: {fileID: -4031256895376471941}
   m_Layer: 8
   m_Name: Golem boss
   m_TagString: Boss
@@ -76,15 +77,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6915e2b3b37a2bf4dba47655a74c4966, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.8828125}
+  m_Size: {x: 2.1333334, y: 2.1333334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &2634154764965428733
@@ -167,8 +168,15 @@ MonoBehaviour:
   golem_rigidbody2D: {fileID: 0}
   golem_speed: 0
   golem_transform: {fileID: 0}
+  have_started_phase2: 0
+  spike: {fileID: 0}
+  spike_speed: 0
+  log: {fileID: 0}
+  log_speed: 0
+  do_despawn_logs: 0
+  have_pillars_spawned: 0
   pillar: {fileID: 0}
-  pillar_spawn_telegraph_timer: 0
+  pillar_telegraph_spawn_time: 0
   have_pillar_telegraph_spawned: 0
   telegraph_pillar: {fileID: 1206574531242527526, guid: 3128a17a96ec2a5408854f6986196e79, type: 3}
   projectile: {fileID: 3963257693850774111, guid: a76905272d3bf124e8dedc598f0c56e8, type: 3}
@@ -178,3 +186,26 @@ MonoBehaviour:
   bomb_projectile_spawn_interval: 2
   projectile_spawn_interval: 0.1
   consequetive_projectile_angle_degrees: 12
+  bomb_max_bounces: 0
+  bouncy_projectile_max_bounces: 0
+--- !u!95 &-4031256895376471941
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768702421438672523}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9041a0fbeae897741816f0d9eec104a2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
