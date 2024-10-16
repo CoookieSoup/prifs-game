@@ -16,6 +16,12 @@ public class log_script : MonoBehaviour
 
     void Update()
     {
+        if (log_rigidbody2D.velocity != Vector2.zero)
+        {
+            Vector2 rotationDirection = log_rigidbody2D.velocity;
+            float angle = Mathf.Atan2(rotationDirection.y, rotationDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle + 90f);
+        }
         if (transform.position.y <= 0f && !is_horizontal)
         {
             log_rigidbody2D.velocity = Vector2.zero;
@@ -25,7 +31,5 @@ public class log_script : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y + Time.deltaTime * golem_script.log_speed, transform.localScale.z);
     }
 }

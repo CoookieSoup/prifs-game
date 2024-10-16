@@ -42,6 +42,11 @@ public class Bomb_projectile_script : MonoBehaviour
                     Vector2 movementDirection = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
                     var BouncyProjectile = Instantiate(bouncy_projectile, transform.position, transform.rotation);
                     BouncyProjectile.GetComponent<Rigidbody2D>().velocity = movementDirection * golem_script.bomb_projectile_speed;
+
+                    Vector2 rotationDirection = BouncyProjectile.GetComponent<Rigidbody2D>().velocity;   
+                    float angle = Mathf.Atan2(rotationDirection.y, rotationDirection.x) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.Euler(0f, 0f, angle + 90f);
+
                     spawnAngle += 45;
                 }
             else
@@ -53,6 +58,11 @@ public class Bomb_projectile_script : MonoBehaviour
                     Vector2 movementDirection = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
                     var BouncyProjectile = Instantiate(bouncy_projectile, transform.position, transform.rotation);
                     BouncyProjectile.GetComponent<Rigidbody2D>().velocity = movementDirection * golem_script.bomb_projectile_speed;
+
+                    Vector2 rotationDirection = BouncyProjectile.GetComponent<Rigidbody2D>().velocity;
+                    float angle = Mathf.Atan2(rotationDirection.y, rotationDirection.x) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.Euler(0f, 0f, angle + 90f);
+
                     spawnAngle += 36;
                 }
             }

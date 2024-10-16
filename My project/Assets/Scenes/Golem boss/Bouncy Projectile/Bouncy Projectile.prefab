@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4706541425941748386}
   - component: {fileID: 3308417704038553045}
   - component: {fileID: -8601852541871574718}
+  - component: {fileID: 3065866573442555917}
   m_Layer: 7
   m_Name: Bouncy Projectile
   m_TagString: Projectile
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: -1162948359, guid: 013a3c66ad1ebd0449e9c61252bac83c, type: 3}
   m_Color: {r: 0, g: 0.91533947, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -163,3 +164,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bouncy_projectile_rigidBody2D: {fileID: 4706541425941748386}
   bouncy_projectile_transform: {fileID: 6236277764168623078}
+  golem_script: {fileID: 0}
+--- !u!95 &3065866573442555917
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963257693850774111}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 323d3c9eb12e65748b9bef01a89e5259, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

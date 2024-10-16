@@ -413,6 +413,150 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!60 &1213986695
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115880841}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.6}
+    newSize: {x: 1.6, y: 1.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.27161694, y: -0.50300044}
+      - {x: 0.26999998, y: -0.66999996}
+      - {x: 0.25, y: -0.66999996}
+      - {x: 0.24499999, y: -0.675}
+      - {x: 0.24499999, y: -0.79999995}
+      - {x: 0.63, y: -0.79999995}
+      - {x: 0.655, y: -0.775}
+      - {x: 0.65999997, y: -0.72249997}
+      - {x: 0.635, y: -0.6475}
+      - {x: 0.48, y: -0.525}
+      - {x: 0.48499998, y: -0.4475}
+      - {x: 0.45999998, y: -0.3225}
+      - {x: 0.4325, y: -0.295}
+      - {x: 0.22, y: -0.2925}
+      - {x: 0.26999998, y: -0.2575}
+      - {x: 0.26, y: -0.0975}
+      - {x: 0.2325, y: -0.089999996}
+      - {x: 0.25, y: -0.08}
+      - {x: 0.265, y: -0.1025}
+      - {x: 0.29999998, y: -0.13}
+      - {x: 0.5025, y: -0.13499999}
+      - {x: 0.6275, y: -0.11}
+      - {x: 0.675, y: -0.13}
+      - {x: 0.79999995, y: -0.13}
+      - {x: 0.79999995, y: 0.13}
+      - {x: 0.675, y: 0.13}
+      - {x: 0.66999996, y: 0.125}
+      - {x: 0.66999996, y: 0.08}
+      - {x: 0.48, y: 0.08}
+      - {x: 0.60249996, y: 0.114999995}
+      - {x: 0.635, y: 0.145}
+      - {x: 0.6875, y: 0.29749998}
+      - {x: 0.68, y: 0.435}
+      - {x: 0.6475, y: 0.435}
+      - {x: 0.585, y: 0.41}
+      - {x: 0.4675, y: 0.315}
+      - {x: 0.415, y: 0.2775}
+      - {x: 0.29, y: 0.2875}
+      - {x: 0.33499998, y: 0.33499998}
+      - {x: 0.3575, y: 0.3725}
+      - {x: 0.35999998, y: 0.4525}
+      - {x: 0.3375, y: 0.505}
+      - {x: 0.275, y: 0.49249998}
+      - {x: 0.30249998, y: 0.515}
+      - {x: 0.33499998, y: 0.5725}
+      - {x: 0.33499998, y: 0.6275}
+      - {x: 0.3075, y: 0.6725}
+      - {x: 0.19999999, y: 0.695}
+      - {x: 0.11, y: 0.79749995}
+      - {x: 0.074999996, y: 0.79999995}
+      - {x: -0.0475, y: 0.79999995}
+      - {x: -0.1025, y: 0.76}
+      - {x: -0.1325, y: 0.72749996}
+      - {x: -0.17999999, y: 0.6875}
+      - {x: -0.2775, y: 0.685}
+      - {x: -0.305, y: 0.65749997}
+      - {x: -0.31, y: 0.5725}
+      - {x: -0.2875, y: 0.54249996}
+      - {x: -0.2525, y: 0.5175}
+      - {x: -0.375, y: 0.505}
+      - {x: -0.38, y: 0.5}
+      - {x: -0.385, y: 0.4475}
+      - {x: -0.35999998, y: 0.3725}
+      - {x: -0.33249998, y: 0.345}
+      - {x: -0.305, y: 0.255}
+      - {x: -0.49249998, y: 0.2825}
+      - {x: -0.5475, y: 0.31}
+      - {x: -0.59499997, y: 0.305}
+      - {x: -0.59, y: 0.4025}
+      - {x: -0.6475, y: 0.44}
+      - {x: -0.6825, y: 0.42749998}
+      - {x: -0.685, y: 0.3475}
+      - {x: -0.65999997, y: 0.19749999}
+      - {x: -0.635, y: 0.1475}
+      - {x: -0.59999996, y: 0.12}
+      - {x: -0.4975, y: 0.114999995}
+      - {x: -0.48, y: 0.08}
+      - {x: -0.675, y: 0.13}
+      - {x: -0.79999995, y: 0.13}
+      - {x: -0.79999995, y: -0.13}
+      - {x: -0.6725, y: -0.13499999}
+      - {x: -0.635, y: -0.11}
+      - {x: -0.5775, y: -0.13499999}
+      - {x: -0.29999998, y: -0.13}
+      - {x: -0.24249999, y: -0.085}
+      - {x: -0.255, y: -0.099999994}
+      - {x: -0.26, y: -0.2525}
+      - {x: -0.2375, y: -0.28}
+      - {x: -0.4375, y: -0.295}
+      - {x: -0.46249998, y: -0.3225}
+      - {x: -0.48999998, y: -0.60499996}
+      - {x: -0.5875, y: -0.62}
+      - {x: -0.625, y: -0.645}
+      - {x: -0.63, y: -0.65}
+      - {x: -0.63, y: -0.79999995}
+      - {x: -0.24499999, y: -0.79999995}
+      - {x: -0.24, y: -0.6725}
+      - {x: -0.24, y: -0.5475}
+      - {x: -0.26999998, y: -0.505}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1845813304
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,8 +1059,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -2134484137, guid: 6915e2b3b37a2bf4dba47655a74c4966, type: 3}
     - target: {fileID: 2044672893029410776, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044672893029410776, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634154764965428733, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: m_Radius
+      value: 0.69116634
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634154764965428733, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634154764965428733, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1911663
       objectReference: {fileID: 0}
     - target: {fileID: 2634154764965428733, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
       propertyPath: m_IsTrigger
@@ -938,6 +1098,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 768702421438672523, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1213986695}
     - targetCorrespondingSourceObject: {fileID: 768702421438672523, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1213986694}
