@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2634154764965428733}
   - component: {fileID: 8416843537281631868}
   - component: {fileID: 486777483190395386}
-  - component: {fileID: -4031256895376471941}
   m_Layer: 8
   m_Name: Golem boss
   m_TagString: Boss
@@ -82,10 +81,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.1333334, y: 2.1333334}
+  m_Size: {x: 1.6, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &2634154764965428733
@@ -188,24 +187,3 @@ MonoBehaviour:
   consequetive_projectile_angle_degrees: 12
   bomb_max_bounces: 0
   bouncy_projectile_max_bounces: 0
---- !u!95 &-4031256895376471941
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768702421438672523}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9041a0fbeae897741816f0d9eec104a2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

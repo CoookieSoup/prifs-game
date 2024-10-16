@@ -377,6 +377,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1115880841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 768702421438672523, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+  m_PrefabInstance: {fileID: 3766723067767945036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &1213986686 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 8416843537281631868, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
@@ -387,6 +392,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 838296990000448772, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
   m_PrefabInstance: {fileID: 3766723067767945036}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1213986694
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115880841}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9041a0fbeae897741816f0d9eec104a2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1845813304
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,6 +910,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2044672893029410776, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2134484137, guid: 6915e2b3b37a2bf4dba47655a74c4966, type: 3}
+    - target: {fileID: 2044672893029410776, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2634154764965428733, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -903,7 +937,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 768702421438672523, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1213986694}
   m_SourcePrefab: {fileID: 100100000, guid: b5dd479244dad9742ac6607ee34a36a5, type: 3}
 --- !u!1001 &8551511955992572322
 PrefabInstance:

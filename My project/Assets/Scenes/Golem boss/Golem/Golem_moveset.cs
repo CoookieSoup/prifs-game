@@ -17,6 +17,7 @@ public class Golem_moveset : MonoBehaviour
     public Transform golem_transform;
     public bool have_started_phase2 = false;
 
+    private Animator animator;
 
     //Spike
     public GameObject spike;
@@ -56,11 +57,12 @@ public class Golem_moveset : MonoBehaviour
         golem_rigidbody2D = GetComponent<Rigidbody2D>();
         current_golem_health = max_golem_health;
         pillar_telegraph_spawn_timer = pillar_telegraph_spawn_time;
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
         timer += Time.deltaTime;
-
+        animator.Play("Golem_idle");
         if (current_golem_health < max_golem_health / 2)
             isPhase2 = true;
         if (!isPhase2)
