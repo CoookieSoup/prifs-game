@@ -5,12 +5,14 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
 
-public class Object_test_script : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public float speed; //Can be changed in the Unity editor
     private Rigidbody2D rigid_body_player;
+    private Health health;
     void Start()
     {
+        health = GetComponent<Health>();
         rigid_body_player = GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -23,5 +25,10 @@ public class Object_test_script : MonoBehaviour
             moveHorizontal /= Mathf.Sqrt(2);
         }
         rigid_body_player.velocity = new Vector2(moveHorizontal * speed, moveVertical * speed); //Apply movement
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Projectile") health.TakeDamage(10); // test amount of damage
     }
 }
