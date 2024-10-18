@@ -27,7 +27,7 @@ public class log_script : MonoBehaviour
             log_rigidbody2D.velocity = Vector2.zero;
             log_rigidbody2D.bodyType = RigidbodyType2D.Static;
         }
-        if (golem_script.do_despawn_logs || transform.position.x >= 30f || transform.position.x <= -30f)
+        if (golem_script.do_despawn_logs || transform.position.x >= 40f || transform.position.x <= -40f)
         {
             Destroy(gameObject);
         }

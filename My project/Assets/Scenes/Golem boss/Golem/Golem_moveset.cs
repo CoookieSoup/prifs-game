@@ -59,7 +59,7 @@ public class Golem_moveset : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (current_golem_health < max_golem_health / 2)
+        //if (current_golem_health < max_golem_health / 2)
             //isPhase2 = true;
         if (!isPhase2)
         {
@@ -87,6 +87,7 @@ public class Golem_moveset : MonoBehaviour
             }
             if (timer >= 66f && timer <= 96f)
             {
+                GolemMovement();
                 LogAttack();
             }
             if (timer >= 100f) //Restart the cycle
@@ -343,6 +344,10 @@ public class Golem_moveset : MonoBehaviour
             Vector2 movementDirection = new Vector2(7f - golem_transform.position.x, 0f - golem_transform.position.y); //Direction to player
             movementDirection.Normalize(); //Made to length 1 so it doesnt affect speed
             golem_rigidbody2D.velocity = movementDirection * golem_speed * 3; //Speed applied
+        }
+        else
+        {
+            golem_rigidbody2D.velocity = Vector2.zero;
         }
     }
 }
