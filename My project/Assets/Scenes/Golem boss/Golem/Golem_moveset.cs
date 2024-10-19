@@ -7,48 +7,54 @@ public class Golem_moveset : MonoBehaviour
 {
 
 
-    public Transform player_transform;
+    [HideInInspector] public Transform player_transform;
     public float timer = 0f;
     public bool isPhase2;
     public int max_golem_health;
     private int current_golem_health;
-    public Rigidbody2D golem_rigidbody2D;
+    [HideInInspector] public Rigidbody2D golem_rigidbody2D;
     public float golem_speed;
-    public Transform golem_transform;
-    public bool have_started_phase2 = false;
+    [HideInInspector] public Transform golem_transform;
+    private bool have_started_phase2 = false;
+
+
+    //Spiked boulder
+    public float spiked_boulder_speed;
+    public GameObject spiked_boulder;
+    private bool do_spawn_spiked_boulder = true;
 
     //Spike
-    public GameObject spike;
-    public float spike_speed;
+    [HideInInspector] private GameObject spike;
+    private float spike_speed;
 
     //Log
-    public GameObject log;
+    [HideInInspector] public GameObject log;
     private float log_timer = 0f;
     public float log_speed;
     public bool do_despawn_logs = false;
     private float alternative_log_timer_phase2 = 0f;
 
     //Dynamic pillar
-    public bool have_pillars_spawned = false;
-    public GameObject pillar;
+    private bool have_pillars_spawned = false;
+    [HideInInspector] public GameObject pillar;
     public float pillar_telegraph_spawn_time;
-    public bool have_pillar_telegraph_spawned = false;
-    public GameObject telegraph_pillar;
+    private bool have_pillar_telegraph_spawned = false;
+    [HideInInspector] public GameObject telegraph_pillar;
     private float pillar_telegraph_spawn_timer;
 
     //Projectiles
-    public GameObject projectile;
-    public GameObject Bomb_projectile;
-    private int spawnAngle = 0;
+    [HideInInspector] public GameObject projectile;
+    [HideInInspector] public GameObject Bomb_projectile;
+    private float spawnAngle = 0;
     public float projectile_speed;
-    public float bomb_projectile_speed;
-    public float bomb_projectile_spawn_interval;
+    [HideInInspector] public float bomb_projectile_speed;
+    [HideInInspector] public float bomb_projectile_spawn_interval;
     public float projectile_spawn_interval;
-    public int consequetive_projectile_angle_degrees;
+    public float consequetive_projectile_angle_degrees;
     private float projectile_spawn_timer = 0;
     private float bomb_projectile_spawn_timer = 0;
-    public int bomb_max_bounces;
-    public int bouncy_projectile_max_bounces;
+    [HideInInspector] public int bomb_max_bounces;
+    [HideInInspector] public int bouncy_projectile_max_bounces;
 
     private void Start()
     {
@@ -60,7 +66,7 @@ public class Golem_moveset : MonoBehaviour
     {
         timer += Time.deltaTime;
         //if (current_golem_health < max_golem_health / 2)
-            //isPhase2 = true;
+        //isPhase2 = true;
         if (!isPhase2)
         {
             if (timer <= 0f)
@@ -112,6 +118,7 @@ public class Golem_moveset : MonoBehaviour
             }
             if (timer >= 0f && timer <= 30f)
             {
+                Spawn_spiked_boulder();
                 BombAttack1();
                 GolemMovement();
             }
@@ -130,6 +137,7 @@ public class Golem_moveset : MonoBehaviour
             }
             if (timer >= 66f && timer <= 85f)
             {
+                
                 LogAttack();
             }
             if (timer >= 85f && timer <= 86f)
@@ -146,6 +154,7 @@ public class Golem_moveset : MonoBehaviour
                 log_timer = 0f;
                 timer = -5f;
                 do_despawn_logs = true;
+                do_spawn_spiked_boulder = true;
             }
         }
     }
@@ -165,7 +174,7 @@ public class Golem_moveset : MonoBehaviour
             Projectile2.GetComponent<Rigidbody2D>().velocity = -movementDirection * projectile_speed;
             if (isPhase2) //For the creation of a 3rd and 4th circle of projectiles
             {
-                float radiansExtra = (spawnAngle + 90) * Mathf.Deg2Rad; //Essentially same as bullet1 and bullet2 but shifter 90 degrees
+                float radiansExtra = (spawnAngle + 90) * Mathf.Deg2Rad; //Essentially same as bullet1 and bullet2 but shifted 90 degrees
                 Vector2 movementDirection1 = new Vector2(Mathf.Cos(radiansExtra), Mathf.Sin(radiansExtra));
                 var Projectile3 = Instantiate(projectile, transform.position, transform.rotation);
                 var Projectile4 = Instantiate(projectile, transform.position, transform.rotation);
@@ -294,49 +303,49 @@ public class Golem_moveset : MonoBehaviour
         }
         if (isPhase2 && alternative_log_timer_phase2 >= 9.5f)
         {
-
-
-            //2 horizontal logs
-            Vector2 trajectory6 = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f)); //First horizontal log
-            var Log6 = Instantiate(log, new Vector2(-25f, trajectory6.x), transform.rotation);
-            Vector2 direction6 = new Vector2(30f, trajectory6.y - trajectory6.x);
-            direction6.Normalize();
-            Log6.GetComponent<Rigidbody2D>().velocity = direction6 * log_speed;
-            Log6.transform.localScale = new Vector3(Log6.transform.localScale.x, Log6.transform.localScale.y / 3, Log6.transform.localScale.z);
-            Log6.GetComponent<log_script>().is_horizontal = true;
-
-            Vector2 trajectory7 = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f)); //Second horizontal log
-            var Log7 = Instantiate(log, new Vector2(25f, trajectory7.x), transform.rotation);
-            Vector2 direction7 = new Vector2(-30f, trajectory7.y - trajectory7.x);
-            direction7.Normalize();
-            Log7.GetComponent<Rigidbody2D>().velocity = direction7 * log_speed;
-            Log7.transform.localScale = new Vector3(Log7.transform.localScale.x, Log7.transform.localScale.y / 3, Log7.transform.localScale.z);
-            Log7.GetComponent<log_script>().is_horizontal = true;
+            //2 phase2 horizontal logs
+            for (int i = -1; i < 2; i = i + 2)
+            {
+                Vector2 trajectory6 = new Vector2(Random.Range(-4.2f, 4.4f), Random.Range(-4.2f, 4.4f));
+                var Log6 = Instantiate(log, new Vector2(25f * i, trajectory6.x), transform.rotation);
+                Vector2 direction6 = new Vector2(30f * (-i), trajectory6.y - trajectory6.x);
+                direction6.Normalize();
+                Log6.GetComponent<Rigidbody2D>().velocity = direction6 * log_speed;
+                Log6.transform.localScale = new Vector3(Log6.transform.localScale.x, Log6.transform.localScale.y / 3, Log6.transform.localScale.z);
+                Log6.GetComponent<log_script>().is_horizontal = true;
+            }
             alternative_log_timer_phase2 = 6.5f;
         }
         if (log_timer >= 8f)
         {
-            Vector2 trajectory4 = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f)); //Third horizontal log
-            var Log4 = Instantiate(log, new Vector2(-25f, trajectory4.x), transform.rotation);
-            Vector2 direction4 = new Vector2(30f, trajectory4.y - trajectory4.x);
-            direction4.Normalize();
-            Log4.GetComponent<Rigidbody2D>().velocity = direction4 * log_speed;
-            Log4.transform.localScale = new Vector3(Log4.transform.localScale.x, Log4.transform.localScale.y / 3, Log4.transform.localScale.z);
-            Log4.GetComponent<log_script>().is_horizontal = true;
-
-            Vector2 trajectory5 = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f)); //Fourth horizontal log
-            var Log5 = Instantiate(log, new Vector2(25f, trajectory5.x), transform.rotation);
-            Vector2 direction5 = new Vector2(-30f, trajectory5.y - trajectory5.x);
-            direction5.Normalize();
-            Log5.GetComponent<Rigidbody2D>().velocity = direction5 * log_speed;
-            Log5.transform.localScale = new Vector3(Log5.transform.localScale.x, Log5.transform.localScale.y / 3, Log5.transform.localScale.z);
-            Log5.GetComponent<log_script>().is_horizontal = true;
-
+            //2 phase1 horizontal logs
+            for (int i = -1; i < 2; i = i + 2)
+            {
+                Vector2 trajectory6 = new Vector2(Random.Range(-4.2f, 4.4f), Random.Range(-4.2f, 4.4f));
+                var Log6 = Instantiate(log, new Vector2(25f * i, trajectory6.x), transform.rotation);
+                Vector2 direction6 = new Vector2(30f * (-i), trajectory6.y - trajectory6.x);
+                direction6.Normalize();
+                Log6.GetComponent<Rigidbody2D>().velocity = direction6 * log_speed;
+                Log6.transform.localScale = new Vector3(Log6.transform.localScale.x, Log6.transform.localScale.y / 3, Log6.transform.localScale.z);
+                Log6.GetComponent<log_script>().is_horizontal = true;
+            }
             log_timer = 5f;
         }
-
     }
 
+    void Spawn_spiked_boulder()
+    {
+        if (do_spawn_spiked_boulder)
+        for (int i = -1; i < 2; i = i + 2)
+        {
+            var Spiked_boulder = Instantiate(spiked_boulder, transform.position, transform.rotation);
+            Vector2 direction = new Vector2(0f, spiked_boulder_speed); //0.00001f is required for spiked_boulder logic (see spiked_boulder_script)
+            direction.Normalize();
+            Spiked_boulder.GetComponent<Rigidbody2D>().velocity = direction * spiked_boulder_speed * i;
+            Spiked_boulder.GetComponent<Spiked_boulder_script>().direction_start = i;
+        }
+        do_spawn_spiked_boulder = false;
+    }
     void Golem_return_home()
     {
         if (golem_transform.position.x < 7f)

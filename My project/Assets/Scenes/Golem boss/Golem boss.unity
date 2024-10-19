@@ -1371,11 +1371,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1430175606487284883, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.24
+      value: -8.17
       objectReference: {fileID: 0}
     - target: {fileID: 1430175606487284883, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 1430175606487284883, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1431,16 +1431,12 @@ PrefabInstance:
       value: Golem boss (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4000081841123499255, guid: c742097a4a4d345429c7476789e61902, type: 3}
-      propertyPath: isPhase2
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000081841123499255, guid: c742097a4a4d345429c7476789e61902, type: 3}
       propertyPath: player_transform
       value: 
       objectReference: {fileID: 152800715}
     - target: {fileID: 8194604835049765793, guid: c742097a4a4d345429c7476789e61902, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.24
+      value: 6.37
       objectReference: {fileID: 0}
     - target: {fileID: 8194604835049765793, guid: c742097a4a4d345429c7476789e61902, type: 3}
       propertyPath: m_LocalPosition.y

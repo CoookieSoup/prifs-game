@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1220601428399456374}
   - component: {fileID: 2862748862815583158}
   - component: {fileID: 7785133424135215357}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: Log
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4352
+    m_Bits: 135424
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -155,7 +155,7 @@ Rigidbody2D:
     m_Bits: 1024
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4352
+    m_Bits: 135424
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -185,9 +185,9 @@ GameObject:
   - component: {fileID: 6821327985256896384}
   - component: {fileID: 5714840474044018645}
   - component: {fileID: 8972058177091479655}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Log hurtbox
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,7 +249,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.49803922}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -288,7 +288,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

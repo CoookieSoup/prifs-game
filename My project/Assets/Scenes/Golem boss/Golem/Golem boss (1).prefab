@@ -126,23 +126,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6aa4ce2ca8145c448b87abdb4b881c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_transform: {fileID: 828511826888489905, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
-  timer: 0
+  player_transform: {fileID: 0}
+  timer: 60
   isPhase2: 1
   max_golem_health: 100
   golem_rigidbody2D: {fileID: 6859205080415418649}
   golem_speed: 0.1
   golem_transform: {fileID: 8194604835049765793}
-  have_started_phase2: 0
-  spike: {fileID: 0}
-  spike_speed: 3
+  spiked_boulder_speed: 16
+  spiked_boulder: {fileID: 5846606313863012123, guid: 85e70fa07df57ac4fb7747229d020dfa, type: 3}
   log: {fileID: 4308721013236243717, guid: f0f306ec1da5c424497ac339c43da94b, type: 3}
-  log_speed: 7
+  log_speed: 9
   do_despawn_logs: 0
-  have_pillars_spawned: 0
   pillar: {fileID: 1206574531242527526, guid: b56c4374cf3167240a60174e2321cb11, type: 3}
   pillar_telegraph_spawn_time: 5
-  have_pillar_telegraph_spawned: 0
   telegraph_pillar: {fileID: 1206574531242527526, guid: 3128a17a96ec2a5408854f6986196e79, type: 3}
   projectile: {fileID: 3963257693850774111, guid: a76905272d3bf124e8dedc598f0c56e8, type: 3}
   Bomb_projectile: {fileID: 3963257693850774111, guid: d26bbbcbce513fa4281dd65cf8cf48ec, type: 3}
@@ -150,7 +147,7 @@ MonoBehaviour:
   bomb_projectile_speed: 2
   bomb_projectile_spawn_interval: 2
   projectile_spawn_interval: 0.1
-  consequetive_projectile_angle_degrees: 12
+  consequetive_projectile_angle_degrees: 17.943
   bomb_max_bounces: 1
   bouncy_projectile_max_bounces: 1
 --- !u!95 &5277880100817359471
