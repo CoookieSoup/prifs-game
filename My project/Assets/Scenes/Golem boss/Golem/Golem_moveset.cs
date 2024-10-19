@@ -161,7 +161,6 @@ public class Golem_moveset : MonoBehaviour
 
     void CircularAttack1()
     {
-
         projectile_spawn_timer += Time.deltaTime;
         if (projectile_spawn_timer > projectile_spawn_interval)
         {
@@ -339,10 +338,10 @@ public class Golem_moveset : MonoBehaviour
         for (int i = -1; i < 2; i = i + 2)
         {
             var Spiked_boulder = Instantiate(spiked_boulder, transform.position, transform.rotation);
-            Vector2 direction = new Vector2(0f, spiked_boulder_speed); //0.00001f is required for spiked_boulder logic (see spiked_boulder_script)
+            Vector2 direction = new Vector2(0f, spiked_boulder_speed);
             direction.Normalize();
             Spiked_boulder.GetComponent<Rigidbody2D>().velocity = direction * spiked_boulder_speed * i;
-            Spiked_boulder.GetComponent<Spiked_boulder_script>().direction_start = i;
+            Spiked_boulder.GetComponent<Spiked_boulder_script>().direction_start = i;   //On first contact the spiked boulder may not contact in the corner, this is used in spiked_boulder_script to resolve it
         }
         do_spawn_spiked_boulder = false;
     }
@@ -356,7 +355,7 @@ public class Golem_moveset : MonoBehaviour
         }
         else
         {
-            golem_rigidbody2D.velocity = Vector2.zero;
+            golem_rigidbody2D.velocity = Vector2.zero;  //To stop jittering when having crosses the required threshold
         }
     }
 }

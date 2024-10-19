@@ -18,16 +18,17 @@ public class log_script : MonoBehaviour
     {
         if (log_rigidbody2D.velocity != Vector2.zero)
         {
+            //Sets the rotation equal to travel direction
             Vector2 rotationDirection = log_rigidbody2D.velocity;
             float angle = Mathf.Atan2(rotationDirection.y, rotationDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle + 90f);
         }
-        if (transform.position.y <= 0f && !is_horizontal)
+        if (transform.position.y <= 0f && !is_horizontal)   //For the vertical logs to stay on screen and become immovable
         {
             log_rigidbody2D.velocity = Vector2.zero;
             log_rigidbody2D.bodyType = RigidbodyType2D.Static;
         }
-        if (golem_script.do_despawn_logs || transform.position.x >= 30f || transform.position.x <= -30f)
+        if (golem_script.do_despawn_logs || transform.position.x >= 30f || transform.position.x <= -30f)    //Unload after travelling ofscreen
         {
             Destroy(gameObject);
         }
