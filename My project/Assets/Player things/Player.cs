@@ -3,28 +3,50 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.Windows.Speech;
 
 public class Object_test_script : MonoBehaviour
 {
-    public float speed; //Can be changed in the Unity editor
+    public float speed;
+    public float jump_height;
     private Rigidbody2D rigid_body_player;
+    public bool isGrounded = true;
     void Start()
     {
         rigid_body_player = GetComponent<Rigidbody2D>();
     }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            isGrounded = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            isGrounded = false;
+        }
+    }
     void Update()
     {
-        float moveHorizontal = Input.GetAxisRaw("Horizontal"); //Did not use GetAxis, because it has values besides 0 1 -1 and that makes the movement slugish
-        float moveVertical = Input.GetAxisRaw("Vertical");
-        if (moveVertical != 0 && moveHorizontal != 0)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            moveVertical /= Mathf.Sqrt(2);  //Needed else player moves sqrt(2) * speed while moving diagonally which feels unnatural
-            moveHorizontal /= Mathf.Sqrt(2);
+            rigid_body_player.velocity = new Vector2(rigid_body_player.velocity.x, jump_height);
         }
-        Vector2 moveDirection = new Vector2(moveHorizontal, moveVertical);
-        rigid_body_player.velocity = moveDirection * speed; //Apply movement
-        
-        if (moveDirection != Vector2.zero) transform.up = -moveDirection; // Rotate player in the direction of movement
+        if (Input.GetButtonUp("Jump") && rigid_body_player.velocity.y > -1f)
+        {
+            rigid_body_player.velocity = new Vector2(rigid_body_player.velocity.x, rigid_body_player.velocity.y * 0.5f);
+        }
+        if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        {
+            rigid_body_player.velocity = new Vector2(-speed, rigid_body_player.velocity.y);
+        }
+        if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        {
+            rigid_body_player.velocity = new Vector2(speed, rigid_body_player.velocity.y);
+        }
     }
 }
