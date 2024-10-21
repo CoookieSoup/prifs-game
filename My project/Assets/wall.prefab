@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &768702421438672523
+--- !u!1 &4143844364917830364
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 838296990000448772}
-  - component: {fileID: 2044672893029410776}
-  - component: {fileID: 2634154764965428733}
-  - component: {fileID: 8416843537281631868}
-  - component: {fileID: 486777483190395386}
-  m_Layer: 8
-  m_Name: Golem boss
-  m_TagString: Boss
+  - component: {fileID: 7607035421532837757}
+  - component: {fileID: 5211771835686296987}
+  - component: {fileID: 8210110132882273878}
+  - component: {fileID: 7078061257001636271}
+  m_Layer: 12
+  m_Name: wall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &838296990000448772
+--- !u!4 &7607035421532837757
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768702421438672523}
+  m_GameObject: {fileID: 4143844364917830364}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.42, y: -0.01, z: 0}
-  m_LocalScale: {x: 1.8245, y: 1.8245, z: 1.8245}
+  m_LocalPosition: {x: -9.8, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2044672893029410776
+--- !u!212 &5211771835686296987
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768702421438672523}
+  m_GameObject: {fileID: 4143844364917830364}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,24 +75,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.8828125}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2634154764965428733
-CircleCollider2D:
+--- !u!61 &8210110132882273878
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768702421438672523}
+  m_GameObject: {fileID: 4143844364917830364}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -116,28 +115,38 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!50 &8416843537281631868
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &7078061257001636271
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768702421438672523}
+  m_GameObject: {fileID: 4143844364917830364}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -148,33 +157,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &486777483190395386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768702421438672523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6aa4ce2ca8145c448b87abdb4b881c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player_transform: {fileID: 0}
-  isPhase2: 1
-  max_golem_health: 100
-  golem_rigidbody2D: {fileID: 0}
-  golem_speed: 0
-  golem_transform: {fileID: 0}
-  pillar: {fileID: 0}
-  pillar_spawn_telegraph_timer: 0
-  have_pillar_telegraph_spawned: 0
-  telegraph_pillar: {fileID: 1206574531242527526, guid: 3128a17a96ec2a5408854f6986196e79, type: 3}
-  projectile: {fileID: 3963257693850774111, guid: a76905272d3bf124e8dedc598f0c56e8, type: 3}
-  Bomb_projectile: {fileID: 3963257693850774111, guid: d26bbbcbce513fa4281dd65cf8cf48ec, type: 3}
-  projectile_speed: 3
-  bomb_projectile_speed: 2
-  bomb_projectile_spawn_interval: 2
-  projectile_spawn_interval: 0.1
-  consequetive_projectile_angle_degrees: 12
+  m_Constraints: 7

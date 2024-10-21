@@ -33,26 +33,37 @@ public class Bomb_projectile_script : MonoBehaviour
         if (explode_cooldown < 0)
         {
             int spawnAngle = 0;
+            
             if (!golem_script.isPhase2)
-            for (int i = 0; i < 8; i++) //Less projectiles for phase 1
-            {
-                float radians = spawnAngle * Mathf.Deg2Rad;
-                var BouncyProjectile = Instantiate(bouncy_projectile, transform.position, transform.rotation);
-                Vector2 movementDirection = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
-                BouncyProjectile.GetComponent<Rigidbody2D>().velocity = movementDirection * golem_script.bomb_projectile_speed;
-                spawnAngle += 45;
+                for (int i = 0; i < 8; i++) //Less projectiles for phase 1
+                {
+                    float random_offset = Random.Range(-20f, 20f);
+                    float radians = (spawnAngle + random_offset) * Mathf.Deg2Rad;
+                    Vector2 movementDirection = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
+                    var BouncyProjectile = Instantiate(bouncy_projectile, transform.position, transform.rotation);
+                    BouncyProjectile.GetComponent<Rigidbody2D>().velocity = movementDirection * golem_script.bomb_projectile_speed;
 
-            }
+                    Vector2 rotationDirection = BouncyProjectile.GetComponent<Rigidbody2D>().velocity;   
+                    float angle = Mathf.Atan2(rotationDirection.y, rotationDirection.x) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.Euler(0f, 0f, angle + 90f);
+
+                    spawnAngle += 45;
+                }
             else
             {
                 for (int i = 0; i < 10; i++) //More projectiles for phase 2
                 {
-                    float radians = spawnAngle * Mathf.Deg2Rad;
-                    var BouncyProjectile = Instantiate(bouncy_projectile, transform.position, transform.rotation);
+                    float random_offset = Random.Range(-20f, 20f);
+                    float radians = (spawnAngle + random_offset) * Mathf.Deg2Rad;
                     Vector2 movementDirection = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
+                    var BouncyProjectile = Instantiate(bouncy_projectile, transform.position, transform.rotation);
                     BouncyProjectile.GetComponent<Rigidbody2D>().velocity = movementDirection * golem_script.bomb_projectile_speed;
-                    spawnAngle += 36;
 
+                    Vector2 rotationDirection = BouncyProjectile.GetComponent<Rigidbody2D>().velocity;
+                    float angle = Mathf.Atan2(rotationDirection.y, rotationDirection.x) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.Euler(0f, 0f, angle + 90f);
+
+                    spawnAngle += 36;
                 }
             }
             Destroy(gameObject);

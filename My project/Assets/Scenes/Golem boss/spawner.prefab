@@ -41,11 +41,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 148219107076127993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadf57618a508cd4692b6b45f15a9847, type: 3}
+  m_Script: {fileID: 11500000, guid: bd4a3802b7a746c4f9312361c9e88e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  proj_spawnpoint: {fileID: 0}
-  projectile_speed: 4
-  projectile_spawn_interval: 0.1
-  consequetive_projectile_angle_degrees: 15

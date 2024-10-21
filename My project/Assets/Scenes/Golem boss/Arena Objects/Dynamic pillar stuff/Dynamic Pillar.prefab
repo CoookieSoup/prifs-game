@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 254856679082381853}
   - component: {fileID: 8677645197537637585}
   - component: {fileID: -950429911710694570}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Dynamic Pillar
   m_TagString: Wall
   m_Icon: {fileID: 0}
