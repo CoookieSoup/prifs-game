@@ -22,6 +22,9 @@ public class Object_test_script : MonoBehaviour
             moveVertical /= Mathf.Sqrt(2);  //Needed else player moves sqrt(2) * speed while moving diagonally which feels unnatural
             moveHorizontal /= Mathf.Sqrt(2);
         }
-        rigid_body_player.velocity = new Vector2(moveHorizontal * speed, moveVertical * speed); //Apply movement
+        Vector2 moveDirection = new Vector2(moveHorizontal, moveVertical);
+        rigid_body_player.velocity = moveDirection * speed; //Apply movement
+        
+        if (moveDirection != Vector2.zero) transform.up = -moveDirection; // Rotate player in the direction of movement
     }
 }
