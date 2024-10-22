@@ -29,6 +29,10 @@ public class Bouncy_projectile_script : MonoBehaviour
             }
         }
         if (collision.gameObject.tag == "Player")
+        {
+            collision.rigidbody.velocity = Vector2.zero;
             Destroy(gameObject);
+        }
+        
     }
 }

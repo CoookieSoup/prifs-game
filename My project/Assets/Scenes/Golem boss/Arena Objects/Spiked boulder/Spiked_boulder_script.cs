@@ -27,8 +27,7 @@ public class Spiked_boulder_script : MonoBehaviour
             is_correct_direction = false;
         }
     }
-    
-    
+
     void Update()
     {
         //Logic to change direction clockwise after colliding with a wall

@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spiked_boulder_rigidbody2D: {fileID: 0}
-  direction: 0
   golem_script: {fileID: 0}
-  direction_logic: 1
+  direction_start: 0
+  is_correct_direction: 1
