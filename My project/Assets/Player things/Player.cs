@@ -12,11 +12,20 @@ public class Player_script : MonoBehaviour
     public float jump_height;
     private Rigidbody2D rigid_body_player;
     public bool isGrounded = false; //Logic for this is in grounded_check_script
+    private Health health;
     void Start()
     {
+        health = GetComponent<Health>();
         rigid_body_player = GetComponent<Rigidbody2D>();
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Projectile") health.TakeDamage(10); // test amount of damage
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Hurtbox")) health.TakeDamage(10); // test amount of damage
+    }
     void Update()
     {
         float move_horizontal = Input.GetAxisRaw("Horizontal");

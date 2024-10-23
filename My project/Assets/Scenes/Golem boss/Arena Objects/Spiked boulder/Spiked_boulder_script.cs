@@ -8,11 +8,13 @@ public class Spiked_boulder_script : MonoBehaviour
     public Golem_moveset golem_script;
     public int direction_start;
     public bool is_correct_direction = true;
+    private bool can_start = false;
     void Start()
     {
         StartCoroutine(DelayedExecution());
         golem_script = FindObjectOfType<Golem_moveset>();
         spiked_boulder_rigidbody2D = GetComponent<Rigidbody2D>();
+
     }
     
     IEnumerator DelayedExecution()  //Delay for setting the bool is_correct_direction as due to spawning quirks this does not work on start
@@ -26,12 +28,13 @@ public class Spiked_boulder_script : MonoBehaviour
         {
             is_correct_direction = false;
         }
+        can_start = true;
     }
 
     void Update()
     {
         //Logic to change direction clockwise after colliding with a wall
-        if (spiked_boulder_rigidbody2D.velocity == Vector2.zero)
+        if (Mathf.Abs(spiked_boulder_rigidbody2D.velocity.x) <= 0.01f && can_start && Mathf.Abs(spiked_boulder_rigidbody2D.velocity.y) <= 0.01f)
         {
             if (transform.position.x > 0f && transform.position.y > 0f && is_correct_direction)
             {
