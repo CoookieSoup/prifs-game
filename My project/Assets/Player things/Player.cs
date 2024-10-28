@@ -13,10 +13,21 @@ public class Player_script : MonoBehaviour
     private Rigidbody2D rigid_body_player;
     public bool isGrounded = false; //Logic for this is in grounded_check_script
     private Health health;
+    
+    public bool spawnFacingLeft;
+    private bool isFacingLeft;
+    private Vector2 facingLeft;
     void Start()
     {
         health = GetComponent<Health>();
         rigid_body_player = GetComponent<Rigidbody2D>();
+        
+        facingLeft = new Vector2(-transform.localScale.x, transform.localScale.y);
+        if(spawnFacingLeft)
+        {
+            transform.localScale = facingLeft;
+            isFacingLeft = true;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -44,6 +55,28 @@ public class Player_script : MonoBehaviour
         if (move_horizontal == 0)
         {
             rigid_body_player.velocity = new Vector2(rigid_body_player.velocity.y * 0.1f * Time.deltaTime, rigid_body_player.velocity.y); //* 0.1f a
+        }
+        //if (moveDirection != Vector2.zero) transform.up = -moveDirection; // Rotate player in the direction of movement
+        if(move_horizontal > 0 && isFacingLeft)
+        {
+            isFacingLeft = false;
+            Flip();
+        }
+        if(move_horizontal < 0 && !isFacingLeft)
+        {
+            isFacingLeft = true;
+            Flip();
+        }
+    }
+    protected virtual void Flip()
+    {
+        if (isFacingLeft)
+        {
+            transform.localScale = facingLeft;
+        }
+        if (!isFacingLeft)
+        {
+            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
     }
 }

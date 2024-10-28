@@ -17,7 +17,7 @@ public class Melee : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // Attack on Space key press.
+        if (Input.GetKeyDown(KeyCode.E)) // Attack on "E" key press.
         {
             //animator.SetTrigger("MeleeAttack");
             Invoke("ActivateHitbox", attackDelay);
