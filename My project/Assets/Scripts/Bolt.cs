@@ -4,6 +4,7 @@ using UnityEngine;
 public class Bolt : MonoBehaviour
 {
     public float speed = 20;
+    public int damage = 5;
     private float destructionDelay = 3;
 
     private void Start()
@@ -18,13 +19,11 @@ public class Bolt : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        /*
         var health = other.gameObject.GetComponent<Health>();
         if (health != null)
         {
-            //damage
+            health.TakeDamage(damage);
         }
-        */
         
         Destroy(gameObject);
     }
