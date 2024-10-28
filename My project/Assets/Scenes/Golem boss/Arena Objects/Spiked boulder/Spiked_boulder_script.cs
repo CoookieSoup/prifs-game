@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class Spiked_boulder_script : MonoBehaviour
 {
-    public Rigidbody2D spiked_boulder_rigidbody2D;
+    //public Rigidbody2D spiked_boulder_rigidbody2D;
     public Golem_moveset golem_script;
     public int direction_start;
     public bool is_correct_direction = true;
-    private bool can_start = false;
+    private bool is_start = true;
+    // bool can_start = false;
     void Start()
     {
-        StartCoroutine(DelayedExecution());
+        //StartCoroutine(DelayedExecution());
         golem_script = FindObjectOfType<Golem_moveset>();
-        spiked_boulder_rigidbody2D = GetComponent<Rigidbody2D>();
+        //spiked_boulder_rigidbody2D = GetComponent<Rigidbody2D>();
 
     }
-    
+    /*
     IEnumerator DelayedExecution()  //Delay for setting the bool is_correct_direction as due to spawning quirks this does not work on start
     {
         yield return new WaitForSeconds(0.1f);
@@ -28,12 +29,45 @@ public class Spiked_boulder_script : MonoBehaviour
         {
             is_correct_direction = false;
         }
-        can_start = true;
+        //can_start = true;
     }
-
+    */
     void Update()
     {
+        if (direction_start == 1)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y + golem_script.spiked_boulder_speed * Time.deltaTime);
+            if (transform.position.y >= 4.3f)
+            {
+                direction_start = 0;
+            }
+        }
+        if (direction_start == -1)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y - golem_script.spiked_boulder_speed * Time.deltaTime);
+            if (transform.position.y <= -4.2f)
+            {
+                direction_start = 0;
+            }
+        }
+        if (transform.position.x <= -9.2f)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y + golem_script.spiked_boulder_speed * Time.deltaTime);
+        }
+         if (transform.position.x >= 9.45f)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y - golem_script.spiked_boulder_speed * Time.deltaTime);
+        }
+         if (transform.position.y >= 4.3f)
+        {
+            transform.position = new Vector2(transform.position.x + golem_script.spiked_boulder_speed * Time.deltaTime, transform.position.y);
+        }
+         if (transform.position.y <= -4.2f)
+        {
+            transform.position = new Vector2(transform.position.x - golem_script.spiked_boulder_speed * Time.deltaTime  , transform.position.y);
+        }
         //Logic to change direction clockwise after colliding with a wall
+        /*
         if (Mathf.Abs(spiked_boulder_rigidbody2D.velocity.x) <= 0.01f && can_start && Mathf.Abs(spiked_boulder_rigidbody2D.velocity.y) <= 0.01f)
         {
             if (transform.position.x > 0f && transform.position.y > 0f && is_correct_direction)
@@ -63,5 +97,6 @@ public class Spiked_boulder_script : MonoBehaviour
                 is_correct_direction = true;
             }
         }
+        */
     }
 }

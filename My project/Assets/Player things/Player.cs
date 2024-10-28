@@ -35,7 +35,8 @@ public class Player_script : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Hurtbox")) health.TakeDamage(10); // test amount of damage
+        if (other.CompareTag("Hurtbox")) health.TakeDamage(10);
+        if (other.CompareTag("Projectile")) health.TakeDamage(10);
     }
     void Update()
     {
