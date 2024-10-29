@@ -29,7 +29,7 @@ public class gladiator_script : MonoBehaviour
         }
         if (timer >= 10f)
         {
-            Cleave_close_package(); //For visual clarity
+            Cleave_close_package(); //For coding visual clarity
         }
     }
     void Cleave()

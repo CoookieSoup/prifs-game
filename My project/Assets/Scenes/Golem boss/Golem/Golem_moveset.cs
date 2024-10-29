@@ -10,13 +10,14 @@ public class Golem_moveset : MonoBehaviour
     [HideInInspector] public Transform player_transform;
     public float timer = 0f;
     public bool isPhase2;
+
+    //Golem
     public int max_golem_health;
     private int current_golem_health;
     [HideInInspector] public Rigidbody2D golem_rigidbody2D;
     public float golem_speed;
     [HideInInspector] public Transform golem_transform;
     private bool have_started_phase2 = false;
-
 
     //Spiked boulder
     public float spiked_boulder_speed;
@@ -356,9 +357,6 @@ public class Golem_moveset : MonoBehaviour
         for (int i = -1; i < 2; i = i + 2)
         {
             var Spiked_boulder = Instantiate(spiked_boulder, transform.position, transform.rotation);
-            //Vector2 direction = new Vector2(0f, spiked_boulder_speed);
-            //direction.Normalize();
-            //Spiked_boulder.GetComponent<Rigidbody2D>().velocity = direction * spiked_boulder_speed * i;
             Spiked_boulder.GetComponent<Spiked_boulder_script>().direction_start = i;   //On first contact the spiked boulder may not contact in the corner, this is used in spiked_boulder_script to resolve it
         }
         do_spawn_spiked_boulder = false;
