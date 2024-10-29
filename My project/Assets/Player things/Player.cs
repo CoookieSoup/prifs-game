@@ -32,6 +32,7 @@ public class Player_script : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Projectile") health.TakeDamage(10); // test amount of damage
+        if (collision.collider.tag == "Boss") health.TakeDamage(30);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

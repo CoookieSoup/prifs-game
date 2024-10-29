@@ -617,11 +617,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1430175606487284883, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.04
+      value: 3.43
       objectReference: {fileID: 0}
     - target: {fileID: 1430175606487284883, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.26
+      value: -4.17
       objectReference: {fileID: 0}
     - target: {fileID: 1430175606487284883, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.z
@@ -659,13 +659,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5443846982982358320, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
-      propertyPath: hp
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443846982982358320, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
-      propertyPath: maxHp
-      value: 100
+    - target: {fileID: 9202785923614322767, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
+      propertyPath: jump_height
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -807,24 +803,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 152800715}
     - target: {fileID: 4000081841123499255, guid: c742097a4a4d345429c7476789e61902, type: 3}
-      propertyPath: projectile_speed
-      value: 3
+      propertyPath: pillar_spawn_interval
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000081841123499255, guid: c742097a4a4d345429c7476789e61902, type: 3}
       propertyPath: projectile_spawn_interval
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4000081841123499255, guid: c742097a4a4d345429c7476789e61902, type: 3}
-      propertyPath: consequetive_projectile_angle_degrees
-      value: 17.5
+      propertyPath: pillar_telegraph_spawn_time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000081841123499255, guid: c742097a4a4d345429c7476789e61902, type: 3}
+      propertyPath: bomb_projectile_spawn_interval
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8194604835049765793, guid: c742097a4a4d345429c7476789e61902, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.37
+      value: 6.8
       objectReference: {fileID: 0}
     - target: {fileID: 8194604835049765793, guid: c742097a4a4d345429c7476789e61902, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12
+      value: -2.79
       objectReference: {fileID: 0}
     - target: {fileID: 8194604835049765793, guid: c742097a4a4d345429c7476789e61902, type: 3}
       propertyPath: m_LocalPosition.z

@@ -23,7 +23,7 @@ public class log_script : MonoBehaviour
             float angle = Mathf.Atan2(rotationDirection.y, rotationDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle + 90f);
         }
-        if (transform.position.y <= 0f && !is_horizontal)   //For the vertical logs to stay on screen and become immovable
+        if (transform.position.y <= 0f && !is_horizontal && log_rigidbody2D.bodyType != RigidbodyType2D.Static)   //For the vertical logs to stay on screen and become immovable
         {
             log_rigidbody2D.velocity = Vector2.zero;
             log_rigidbody2D.bodyType = RigidbodyType2D.Static;

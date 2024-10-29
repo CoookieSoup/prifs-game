@@ -20,7 +20,7 @@ public class Golem_moveset : MonoBehaviour
 
     //Spiked boulder
     public float spiked_boulder_speed;
-    public GameObject spiked_boulder;
+    [HideInInspector] public GameObject spiked_boulder;
     private bool do_spawn_spiked_boulder = true;
 
     //Spike
@@ -30,17 +30,20 @@ public class Golem_moveset : MonoBehaviour
     //Log
     [HideInInspector] public GameObject log;
     private float log_timer = 0f;
-    public float log_speed;
-    public bool do_despawn_logs = false;
+    [HideInInspector] public float log_speed;
+    [HideInInspector] public bool do_despawn_logs = false;
     private float alternative_log_timer_phase2 = 0f;
 
     //Dynamic pillar
-    private bool have_pillars_spawned = false;
     [HideInInspector] public GameObject pillar;
     public float pillar_telegraph_spawn_time;
     private bool have_pillar_telegraph_spawned = false;
     [HideInInspector] public GameObject telegraph_pillar;
     private float pillar_telegraph_spawn_timer;
+    public float pillar_crumble_timer;
+    private float pillar_timer = 0f;
+    private Vector2 random_pillar_spawn_coords;
+    public float pillar_spawn_interval;
 
     //Projectiles
     [HideInInspector] public GameObject projectile;
@@ -48,7 +51,7 @@ public class Golem_moveset : MonoBehaviour
     private float spawnAngle = 0;
     public float projectile_speed;
     [HideInInspector] public float bomb_projectile_speed;
-    [HideInInspector] public float bomb_projectile_spawn_interval;
+    public float bomb_projectile_spawn_interval;
     public float projectile_spawn_interval;
     public float consequetive_projectile_angle_degrees;
     private float projectile_spawn_timer = 0;
@@ -61,29 +64,39 @@ public class Golem_moveset : MonoBehaviour
         golem_rigidbody2D = GetComponent<Rigidbody2D>();
         current_golem_health = max_golem_health;
         pillar_telegraph_spawn_timer = pillar_telegraph_spawn_time;
+        Spawn_spiked_boulder();
     }
     void Update()
     {
         timer += Time.deltaTime;
-        //if (current_golem_health < max_golem_health / 2)
-        //isPhase2 = true;
-        if (!isPhase2)
+        if (current_golem_health < max_golem_health / 2)
+        isPhase2 = true;
+        if (current_golem_health <= 0)
+        {
+            golem_rigidbody2D.velocity = Vector2.zero;
+            Destroy(gameObject, 4f);
+        }
+        if (!isPhase2 && current_golem_health > 0)
         {
             if (timer <= 0f)
             {
                 GolemMovement();
+                DynamicPillarLogic();
             }
             if (timer >= 0f && timer <= 30f)
             {
+                DynamicPillarLogic();
                 BombAttack1();
                 GolemMovement();
             }
             if (timer >= 30f && timer <= 40f)
             {
+                DynamicPillarLogic();
                 GolemMovement();
             }
             if (timer >= 40f && timer <= 60f)
             {
+                DynamicPillarLogic();
                 CircularAttack1();
                 GolemMovement();
             }
@@ -103,7 +116,7 @@ public class Golem_moveset : MonoBehaviour
                 do_despawn_logs = true;
             }
         }
-        if (isPhase2)
+        if (isPhase2 && current_golem_health > 0)
         {
             if (!have_started_phase2)
             {
@@ -111,23 +124,26 @@ public class Golem_moveset : MonoBehaviour
                 have_started_phase2 = true;
                 golem_speed *= 1.3f;
             }
-            DynamicPillarLogic();
+            
             if (timer >= -5f && timer <= 0f)
             {
+                DynamicPillarLogic();
                 GolemMovement();
             }
             if (timer >= 0f && timer <= 30f)
             {
-                Spawn_spiked_boulder();
+                DynamicPillarLogic();
                 BombAttack1();
                 GolemMovement();
             }
             if (timer >= 30f && timer <= 40f)
             {
+                DynamicPillarLogic();
                 GolemMovement();
             }
             if (timer >= 40f && timer <= 60f)
             {
+                DynamicPillarLogic();
                 CircularAttack1();
                 GolemMovement();
             }
@@ -137,7 +153,6 @@ public class Golem_moveset : MonoBehaviour
             }
             if (timer >= 66f && timer <= 85f)
             {
-                
                 LogAttack();
             }
             if (timer >= 85f && timer <= 86f)
@@ -157,6 +172,7 @@ public class Golem_moveset : MonoBehaviour
                 do_spawn_spiked_boulder = true;
             }
         }
+        
     }
 
     void CircularAttack1()
@@ -198,37 +214,39 @@ public class Golem_moveset : MonoBehaviour
 
     void GolemMovement()
     {
-        Vector2 movementDirection = new Vector2(player_transform.position.x - golem_transform.position.x, player_transform.position.y - golem_transform.position.y); //Direction to player
-        movementDirection.Normalize(); //Made to length 1 so it doesnt affect speed
-        golem_rigidbody2D.velocity = movementDirection * golem_speed; //Speed applied
+        if (Mathf.Abs(player_transform.position.x - golem_transform.position.x) > 0.5f)
+        {
+            Vector2 movementDirection = new Vector2(player_transform.position.x - golem_transform.position.x, 0f); //Direction to player
+            movementDirection.Normalize(); //Made to length 1 so it doesnt affect speed
+            golem_rigidbody2D.velocity = movementDirection * golem_speed; //Speed applied
+        }
+        else
+        {
+            golem_rigidbody2D.velocity = Vector2.zero;
+        }
     }
 
     void DynamicPillarLogic()
     {
-        if (isPhase2 && !have_pillars_spawned)
+        pillar_timer += Time.deltaTime;
+        if (pillar_timer >= pillar_spawn_interval && !have_pillar_telegraph_spawned)
         {
-            if (!have_pillar_telegraph_spawned)
-            {
-                var Telegraph_Pillar1 = Instantiate(telegraph_pillar, new Vector2(5, 2), transform.rotation);
-                var Telegraph_Pillar2 = Instantiate(telegraph_pillar, new Vector2(-5, 2), transform.rotation);
-                var Telegraph_Pillar3 = Instantiate(telegraph_pillar, new Vector2(5, -2), transform.rotation);
-                var Telegraph_Pillar4 = Instantiate(telegraph_pillar, new Vector2(-5, -2), transform.rotation);
-                Destroy(Telegraph_Pillar1, pillar_telegraph_spawn_timer);
-                Destroy(Telegraph_Pillar2, pillar_telegraph_spawn_timer);
-                Destroy(Telegraph_Pillar3, pillar_telegraph_spawn_timer);
-                Destroy(Telegraph_Pillar4, pillar_telegraph_spawn_timer);
-                have_pillar_telegraph_spawned = true;
-            }
+            float weighted_vertical_spawn = Mathf.Min(Random.Range(-1.5f, 2f), Random.Range(-1.5f, 2f)); //It is benificial to spawn the platforms lower so that the player can ectually get on to them
+            float weighted_hertical_spawn2 = Random.Range(-9f, 9f); //Horizontal variety
+            float weighted_hertical_spawn1 = Random.Range(-9f, 9f);
+            //if (Mathf.Abs(weighted_hertical_spawn2) > Mathf.Abs(weighted_hertical_spawn1)) weighted_hertical_spawn1 = weighted_hertical_spawn2;
+            random_pillar_spawn_coords = new Vector2(weighted_hertical_spawn1, weighted_vertical_spawn);
+            var Telegraph_Pillar = Instantiate(telegraph_pillar, random_pillar_spawn_coords, transform.rotation);
+            have_pillar_telegraph_spawned = true;
+            Destroy(Telegraph_Pillar, pillar_spawn_interval);
+            
+        }
+        if (pillar_timer >= pillar_spawn_interval + pillar_telegraph_spawn_timer)
+        {
 
-            pillar_telegraph_spawn_time -= Time.deltaTime;
-            if (pillar_telegraph_spawn_time <= 0)
-            {
-                have_pillars_spawned = true;
-                var Pillar1 = Instantiate(pillar, new Vector2(5, 2), transform.rotation);
-                var Pillar2 = Instantiate(pillar, new Vector2(-5, 2), transform.rotation);
-                var Pillar3 = Instantiate(pillar, new Vector2(5, -2), transform.rotation);
-                var Pillar4 = Instantiate(pillar, new Vector2(-5, -2), transform.rotation);
-            }
+            var Pillar = Instantiate(pillar, random_pillar_spawn_coords, transform.rotation);
+            have_pillar_telegraph_spawned = false;
+            pillar_timer = 0f;
         }
     }
 
@@ -349,7 +367,7 @@ public class Golem_moveset : MonoBehaviour
     {
         if (golem_transform.position.x < 7f)
         {
-            Vector2 movementDirection = new Vector2(7f - golem_transform.position.x, 0f - golem_transform.position.y); //Direction to player
+            Vector2 movementDirection = new Vector2(7f - golem_transform.position.x, 0f); //Direction to player
             movementDirection.Normalize(); //Made to length 1 so it doesnt affect speed
             golem_rigidbody2D.velocity = movementDirection * golem_speed * 3; //Speed applied
         }

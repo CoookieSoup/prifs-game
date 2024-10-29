@@ -450,8 +450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2220f953e31bce34abe65394c4324dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  maxHp: 0
+  hp: 100
+  maxHp: 100
 --- !u!114 &3179748138695725821
 MonoBehaviour:
   m_ObjectHideFlags: 0

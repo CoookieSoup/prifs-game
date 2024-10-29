@@ -17,6 +17,13 @@ public class grouned_check_script : MonoBehaviour
             player_script.isGrounded = true;
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            player_script.isGrounded = true;
+        }
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
