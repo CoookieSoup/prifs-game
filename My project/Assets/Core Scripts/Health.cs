@@ -6,11 +6,10 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int hp;
-    public int maxHp;
+    public int maxHp = 100;
 
     void Start()
     {
-        maxHp = 100;
         hp = maxHp;
     }
 
