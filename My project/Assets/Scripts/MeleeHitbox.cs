@@ -7,6 +7,7 @@ public class MeleeHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!other.CompareTag("Boss")) return;
         var health = other.gameObject.GetComponent<Health>();
         if (health != null)
         {
