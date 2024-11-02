@@ -12,12 +12,11 @@ public class Golem_moveset : MonoBehaviour
     public bool isPhase2;
 
     //Golem
-    public int max_golem_health;
-    private int current_golem_health;
     [HideInInspector] public Rigidbody2D golem_rigidbody2D;
     public float golem_speed;
     [HideInInspector] public Transform golem_transform;
     private bool have_started_phase2 = false;
+    private Health boss_health_component;
 
     //Spiked boulder
     public float spiked_boulder_speed;
@@ -63,69 +62,71 @@ public class Golem_moveset : MonoBehaviour
     private void Start()
     {
         golem_rigidbody2D = GetComponent<Rigidbody2D>();
-        current_golem_health = max_golem_health;
         pillar_telegraph_spawn_timer = pillar_telegraph_spawn_time;
-        Spawn_spiked_boulder();
+        boss_health_component = GetComponent<Health>();
+
+
     }
     void Update()
     {
         timer += Time.deltaTime;
-        if (current_golem_health < max_golem_health / 2)
-        isPhase2 = true;
-        if (current_golem_health <= 0)
+        if (boss_health_component.hp < boss_health_component.maxHp / 2)
+            isPhase2 = true;
+        if (boss_health_component.hp <= 0)
         {
             golem_rigidbody2D.velocity = Vector2.zero;
             Destroy(gameObject, 4f);
         }
-        if (!isPhase2 && current_golem_health > 0)
+        else if (!isPhase2 && boss_health_component.hp > 0)
         {
-            if (timer <= 0f)
-            {
-                GolemMovement();
-                DynamicPillarLogic();
-            }
             if (timer >= 0f && timer <= 30f)
             {
                 DynamicPillarLogic();
                 BombAttack1();
                 GolemMovement();
             }
-            if (timer >= 30f && timer <= 40f)
-            {
-                DynamicPillarLogic();
-                GolemMovement();
-            }
-            if (timer >= 40f && timer <= 60f)
+            if (timer >= 30f && timer <= 60f)
             {
                 DynamicPillarLogic();
                 CircularAttack1();
                 GolemMovement();
             }
-            if (timer >= 60f && timer <= 70f)
+            if (timer >= 60f && timer <= 80f)
+            {
+                DynamicPillarLogic();
+                BombAttack1();
+                GolemMovement();
+            }
+            if (timer >= 80f && timer <= 90f)
             {
                 Golem_return_home();
             }
-            if (timer >= 66f && timer <= 96f)
+            if (timer >= 86f && timer <= 116f)
             {
-                GolemMovement();
+                Golem_return_home();
                 LogAttack();
             }
-            if (timer >= 100f) //Restart the cycle
+            if (timer >= 116f)
+            {
+                GolemMovement();
+            }
+            if (timer >= 120f) //Restart the cycle
             {
                 log_timer = 0f;
                 timer = -5f;
                 do_despawn_logs = true;
             }
         }
-        if (isPhase2 && current_golem_health > 0)
+        if (isPhase2 && boss_health_component.hp > 0)
         {
             if (!have_started_phase2)
             {
-                timer = 0f;    //change to -5f
+                timer = -5f;
                 have_started_phase2 = true;
                 golem_speed *= 1.3f;
+                Spawn_spiked_boulder();
             }
-            
+
             if (timer >= -5f && timer <= 0f)
             {
                 DynamicPillarLogic();
@@ -173,7 +174,7 @@ public class Golem_moveset : MonoBehaviour
                 do_spawn_spiked_boulder = true;
             }
         }
-        
+
     }
 
     void CircularAttack1()
@@ -230,7 +231,7 @@ public class Golem_moveset : MonoBehaviour
     void DynamicPillarLogic()
     {
         pillar_timer += Time.deltaTime;
-        if (pillar_timer >= pillar_spawn_interval && !have_pillar_telegraph_spawned)
+        if (pillar_timer >= pillar_telegraph_spawn_timer && !have_pillar_telegraph_spawned)
         {
             float weighted_vertical_spawn = Mathf.Min(Random.Range(-1.5f, 2f), Random.Range(-1.5f, 2f)); //It is benificial to spawn the platforms lower so that the player can ectually get on to them
             float weighted_hertical_spawn2 = Random.Range(-9f, 9f); //Horizontal variety
@@ -240,7 +241,7 @@ public class Golem_moveset : MonoBehaviour
             var Telegraph_Pillar = Instantiate(telegraph_pillar, random_pillar_spawn_coords, transform.rotation);
             have_pillar_telegraph_spawned = true;
             Destroy(Telegraph_Pillar, pillar_spawn_interval);
-            
+
         }
         if (pillar_timer >= pillar_spawn_interval + pillar_telegraph_spawn_timer)
         {
@@ -354,11 +355,11 @@ public class Golem_moveset : MonoBehaviour
     void Spawn_spiked_boulder()
     {
         if (do_spawn_spiked_boulder)
-        for (int i = -1; i < 2; i = i + 2)
-        {
-            var Spiked_boulder = Instantiate(spiked_boulder, transform.position, transform.rotation);
-            Spiked_boulder.GetComponent<Spiked_boulder_script>().direction_start = i;   //On first contact the spiked boulder may not contact in the corner, this is used in spiked_boulder_script to resolve it
-        }
+            for (int i = -1; i < 2; i = i + 2)
+            {
+                var Spiked_boulder = Instantiate(spiked_boulder, transform.position, transform.rotation);
+                Spiked_boulder.GetComponent<Spiked_boulder_script>().direction_start = i;   //On first contact the spiked boulder may not contact in the corner, this is used in spiked_boulder_script to resolve it
+            }
         do_spawn_spiked_boulder = false;
     }
     void Golem_return_home()

@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 0
-  maxHp: 200
+  maxHp: 1000
 --- !u!1 &1762655005
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,11 +636,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1430175606487284883, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.43
+      value: -7.6
       objectReference: {fileID: 0}
     - target: {fileID: 1430175606487284883, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.17
+      value: -3.41
       objectReference: {fileID: 0}
     - target: {fileID: 1430175606487284883, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: m_LocalPosition.z
@@ -816,6 +816,18 @@ PrefabInstance:
     - target: {fileID: 3281637722647872968, guid: c742097a4a4d345429c7476789e61902, type: 3}
       propertyPath: m_Name
       value: Golem boss (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000081841123499255, guid: c742097a4a4d345429c7476789e61902, type: 3}
+      propertyPath: timer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000081841123499255, guid: c742097a4a4d345429c7476789e61902, type: 3}
+      propertyPath: isPhase2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000081841123499255, guid: c742097a4a4d345429c7476789e61902, type: 3}
+      propertyPath: max_golem_health
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4000081841123499255, guid: c742097a4a4d345429c7476789e61902, type: 3}
       propertyPath: player_transform

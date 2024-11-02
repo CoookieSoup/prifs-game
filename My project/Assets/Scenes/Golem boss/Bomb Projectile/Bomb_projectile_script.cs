@@ -35,7 +35,7 @@ public class Bomb_projectile_script : MonoBehaviour
             int spawnAngle = 0;
             
             if (!golem_script.isPhase2)
-                for (int i = 0; i < 8; i++) //Less projectiles for phase 1
+                for (int i = 0; i < 6; i++) //Less projectiles for phase 1
                 {
                     float random_offset = Random.Range(-20f, 20f);
                     float radians = (spawnAngle + random_offset) * Mathf.Deg2Rad;
@@ -47,11 +47,11 @@ public class Bomb_projectile_script : MonoBehaviour
                     float angle = Mathf.Atan2(rotationDirection.y, rotationDirection.x) * Mathf.Rad2Deg;
                     transform.rotation = Quaternion.Euler(0f, 0f, angle + 90f);
 
-                    spawnAngle += 45;
+                    spawnAngle += 60;
                 }
             else
             {
-                for (int i = 0; i < 10; i++) //More projectiles for phase 2
+                for (int i = 0; i < 8; i++) //More projectiles for phase 2
                 {
                     float random_offset = Random.Range(-20f, 20f);
                     float radians = (spawnAngle + random_offset) * Mathf.Deg2Rad;
@@ -63,7 +63,7 @@ public class Bomb_projectile_script : MonoBehaviour
                     float angle = Mathf.Atan2(rotationDirection.y, rotationDirection.x) * Mathf.Rad2Deg;
                     transform.rotation = Quaternion.Euler(0f, 0f, angle + 90f);
 
-                    spawnAngle += 36;
+                    spawnAngle += 45;
                 }
             }
             Destroy(gameObject);
