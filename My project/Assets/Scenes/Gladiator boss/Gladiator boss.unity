@@ -600,6 +600,10 @@ PrefabInstance:
       propertyPath: maxHp
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5443846982982358320, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
+      propertyPath: damagePopupPrefab
+      value: 
+      objectReference: {fileID: 8313522738106398807, guid: b470f9308c3ee9d42888e1b89adb8828, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -741,6 +745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8503956070181381433, guid: b5f2397a36aa6f14d9900705cb3022c4, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 1775208449}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -938,6 +946,7 @@ GameObject:
   - component: {fileID: 1775208445}
   - component: {fileID: 1775208444}
   - component: {fileID: 1775208448}
+  - component: {fileID: 1775208449}
   m_Layer: 0
   m_Name: Gladiator
   m_TagString: Untagged
@@ -1106,6 +1115,21 @@ MonoBehaviour:
   cleave_right: {fileID: 696349299}
   cleave_warning: {fileID: 376136017}
   player_Transform: {fileID: 305262484}
+--- !u!114 &1775208449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775208443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2220f953e31bce34abe65394c4324dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePopupPrefab: {fileID: 8313522738106398807, guid: b470f9308c3ee9d42888e1b89adb8828, type: 3}
+  hp: 0
+  maxHp: 1000
 --- !u!1 &1818977005
 GameObject:
   m_ObjectHideFlags: 0

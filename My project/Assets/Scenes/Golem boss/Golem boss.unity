@@ -383,7 +383,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -11.93}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -405,6 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2220f953e31bce34abe65394c4324dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagePopupPrefab: {fileID: 8313522738106398807, guid: b470f9308c3ee9d42888e1b89adb8828, type: 3}
   hp: 0
   maxHp: 1000
 --- !u!1 &1762655005
@@ -678,6 +679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5443846982982358320, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
+      propertyPath: damagePopupPrefab
+      value: 
+      objectReference: {fileID: 8313522738106398807, guid: b470f9308c3ee9d42888e1b89adb8828, type: 3}
     - target: {fileID: 9202785923614322767, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: jump_height
       value: 11
@@ -976,6 +981,22 @@ PrefabInstance:
     - target: {fileID: 1071309833507433603, guid: b5f2397a36aa6f14d9900705cb3022c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278679073213958403, guid: b5f2397a36aa6f14d9900705cb3022c4, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962438628570709943, guid: b5f2397a36aa6f14d9900705cb3022c4, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962438628570709943, guid: b5f2397a36aa6f14d9900705cb3022c4, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962438628570709943, guid: b5f2397a36aa6f14d9900705cb3022c4, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3881201917083364672, guid: b5f2397a36aa6f14d9900705cb3022c4, type: 3}
       propertyPath: health
