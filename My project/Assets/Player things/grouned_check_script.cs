@@ -12,21 +12,21 @@ public class grouned_check_script : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Boss"))
         {
             player_script.isGrounded = true;
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Boss"))
         {
             player_script.isGrounded = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Boss"))
         {
             player_script.isGrounded = false;
         }
