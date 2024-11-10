@@ -19,6 +19,8 @@ public class Player_script : MonoBehaviour
     private Vector2 facingLeft;
 
     public float move_horizontal;
+
+    public Animator animator;
     void Start()
     {
         health = GetComponent<Health>();
@@ -43,6 +45,8 @@ public class Player_script : MonoBehaviour
     }
     void Update()
     {
+
+
         move_horizontal = Input.GetAxisRaw("Horizontal");
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
@@ -70,6 +74,15 @@ public class Player_script : MonoBehaviour
         {
             isFacingLeft = true;
             Flip();
+        }
+
+        if (move_horizontal == 0f && isGrounded)
+        {
+            animator.Play("Idle");
+        }
+        else
+        {
+            animator.Play("Walk");
         }
     }
     protected virtual void Flip()

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d166a3598e5e5ec4cb2d8cb05ffec439
+guid: 617cb6f3e534ac24a9303f3a1d255b2b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,43 +123,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: swordAni11_0
+      name: walking1_0
       rect:
         serializedVersion: 2
-        x: 101
-        y: 59
-        width: 260
-        height: 340
+        x: 210
+        y: 160
+        width: 170
+        height: 290
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ec1a2d41de34384ca6ac59400312fcb
-      internalID: 104846538
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: swordAni11_2
-      rect:
-        serializedVersion: 2
-        x: 260
-        y: 300
-        width: 20
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e186c36eca6ced44abc0d494b350a6d2
-      internalID: 27951491
+      spriteID: ea6d66732e8269d479d97755d4324670
+      internalID: 1142837850
       vertices: []
       indices: 
       edges: []
@@ -175,18 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      swordAni11_0: 104846538
-      swordAni11_1: -1125327265
-      swordAni11_10: -161448222
-      swordAni11_11: 1721070931
-      swordAni11_2: 27951491
-      swordAni11_3: 1504523512
-      swordAni11_4: -1546254535
-      swordAni11_5: -1280741965
-      swordAni11_6: 63818767
-      swordAni11_7: 405059024
-      swordAni11_8: 900848752
-      swordAni11_9: -1543884597
+      walking1_0: 1142837850
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,7 +121,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: swordAni12_0
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 59
+        width: 260
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71a92d749c6ca364fbc665f754aae5c6
+      internalID: 1012854596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +153,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      swordAni12_0: 1012854596
+      swordAni12_1: 1968822698
+      swordAni12_10: -1433294240
+      swordAni12_2: 1528666682
+      swordAni12_3: -2106003102
+      swordAni12_4: -1643710991
+      swordAni12_5: 1193486526
+      swordAni12_6: 306196819
+      swordAni12_7: -880595228
+      swordAni12_8: -818628440
+      swordAni12_9: 1302904791
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

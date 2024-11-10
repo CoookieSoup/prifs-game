@@ -4,6 +4,7 @@ using UnityEngine;
 public class MeleeHitbox : MonoBehaviour
 {
     public int damage = 10;
+    public Animator animator;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,5 +14,10 @@ public class MeleeHitbox : MonoBehaviour
         {
             health.TakeDamage(damage);
         }
+    }
+
+    void Update()
+    {
+        animator.Play("Melee");
     }
 }
