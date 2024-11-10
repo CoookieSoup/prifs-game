@@ -17,6 +17,8 @@ public class Player_script : MonoBehaviour
     public bool spawnFacingLeft;
     private bool isFacingLeft;
     private Vector2 facingLeft;
+
+    public float move_horizontal;
     void Start()
     {
         health = GetComponent<Health>();
@@ -41,7 +43,7 @@ public class Player_script : MonoBehaviour
     }
     void Update()
     {
-        float move_horizontal = Input.GetAxisRaw("Horizontal");
+        move_horizontal = Input.GetAxisRaw("Horizontal");
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             rigid_body_player.velocity = new Vector2(rigid_body_player.velocity.x, jump_height);
