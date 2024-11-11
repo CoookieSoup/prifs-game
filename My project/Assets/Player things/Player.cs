@@ -76,7 +76,11 @@ public class Player_script : MonoBehaviour
             Flip();
         }
 
-        if (move_horizontal == 0f && isGrounded)
+        if (health.hp <= 0f)
+        {
+            animator.Play("PlayerDeathReal");
+        }
+        else if (move_horizontal == 0f && isGrounded)
         {
             animator.Play("Idle");
         }
@@ -84,6 +88,7 @@ public class Player_script : MonoBehaviour
         {
             animator.Play("Walk");
         }
+        
     }
     protected virtual void Flip()
     {
