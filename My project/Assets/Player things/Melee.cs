@@ -9,6 +9,7 @@ public class Melee : MonoBehaviour
     private Animator animator;
     private EdgeCollider2D hitbox;
 
+    public AudioClip swordSwingSound;
     private void Start()
     {
         //animator = GetComponent<Animator>();
@@ -28,6 +29,7 @@ public class Melee : MonoBehaviour
     void ActivateHitbox()
     {
         hitbox.gameObject.SetActive(true);
+        Audio.Play(swordSwingSound);
     }
 
     void DeactivateHitbox()

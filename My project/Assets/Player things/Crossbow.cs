@@ -6,6 +6,8 @@ public class Crossbow : MonoBehaviour
     private float cooldownCopy;
     
     public GameObject boltPrefab;
+    
+    public AudioClip shootSound;
 
     private Camera cam;
     
@@ -23,6 +25,7 @@ public class Crossbow : MonoBehaviour
         {
             cooldownCopy = shootCooldown;
             Instantiate(boltPrefab, transform.position, transform.rotation);
+            Audio.Play(shootSound);
         }
 
         // Look at mouse

@@ -21,6 +21,15 @@ public class Player_script : MonoBehaviour
     public float move_horizontal;
 
     public Animator animator;
+
+    public AudioClip jumpSound;
+    public AudioClip landingSound;
+    public AudioClip playerDeathSound;
+    //public AudioClip playerTakeDamageSound;
+    public AudioClip stepSound;
+
+    public float stepSoundInterval = 0.1f;
+    private float stepIntervalCopy;
     void Start()
     {
         health = GetComponent<Health>();
@@ -32,25 +41,28 @@ public class Player_script : MonoBehaviour
             transform.localScale = facingLeft;
             isFacingLeft = true;
         }
+        
+        stepIntervalCopy = stepSoundInterval;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Projectile") health.TakeDamage(10); // test amount of damage
         if (collision.collider.tag == "Boss") health.TakeDamage(30);
+        //Audio.Play(playerTakeDamageSound);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Hurtbox")) health.TakeDamage(10);
         if (other.CompareTag("Projectile")) health.TakeDamage(10);
+        //Audio.Play(playerTakeDamageSound);
     }
     void Update()
     {
-
-
         move_horizontal = Input.GetAxisRaw("Horizontal");
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             rigid_body_player.velocity = new Vector2(rigid_body_player.velocity.x, jump_height);
+            Audio.Play(jumpSound);
         }
         if (Input.GetButtonUp("Jump") && rigid_body_player.velocity.y > -1f)
         {
@@ -79,16 +91,23 @@ public class Player_script : MonoBehaviour
         if (health.hp <= 0f)
         {
             animator.Play("PlayerDeathReal");
+            Audio.Play(playerDeathSound);
         }
         else if (move_horizontal == 0f && isGrounded)
         {
             animator.Play("Idle");
+            stepIntervalCopy = stepSoundInterval;
         }
         else
         {
             animator.Play("Walk");
+            stepIntervalCopy -= Time.deltaTime;
+            if (stepIntervalCopy <= 0)
+            {
+                Audio.Play(stepSound);
+                stepIntervalCopy = stepSoundInterval;
+            }
         }
-        
     }
     protected virtual void Flip()
     {
