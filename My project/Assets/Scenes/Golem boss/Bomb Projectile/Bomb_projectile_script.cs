@@ -10,6 +10,7 @@ public class Bomb_projectile_script : MonoBehaviour
     public float explode_cooldown;
     public Golem_moveset golem_script;
     public GameObject bouncy_projectile;
+    public AudioClip explodeSound;
     void Start()
     {
         golem_script = FindObjectOfType<Golem_moveset>();
@@ -32,6 +33,8 @@ public class Bomb_projectile_script : MonoBehaviour
         explode_cooldown -= Time.deltaTime;
         if (explode_cooldown < 0)
         {
+            Audio.Play(explodeSound);
+            
             int spawnAngle = 0;
             
             if (!golem_script.isPhase2)

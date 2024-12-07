@@ -12,6 +12,8 @@ public class Player_script : MonoBehaviour
     public float jump_height;
     private Rigidbody2D rigid_body_player;
     public bool isGrounded = false; //Logic for this is in grounded_check_script
+    private bool isGroundedCopy = false;
+    private bool isDead = false;
     private Health health;
     
     public bool spawnFacingLeft;
@@ -88,10 +90,18 @@ public class Player_script : MonoBehaviour
             Flip();
         }
 
+        if (isGrounded && !isGroundedCopy)
+        {
+            Audio.Play(landingSound);
+        }
+        isGroundedCopy = isGrounded;
+        
         if (health.hp <= 0f)
         {
             animator.Play("PlayerDeathReal");
-            Audio.Play(playerDeathSound);
+            if (!isDead)
+                Audio.Play(playerDeathSound);
+            isDead = true;
         }
         else if (move_horizontal == 0f && isGrounded)
         {

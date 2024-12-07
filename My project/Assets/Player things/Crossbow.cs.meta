@@ -3,7 +3,9 @@ guid: 39dff4a01b6b14fb6afdc5d34cf8e453
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - boltPrefab: {instanceID: 0}
+  - shootSound: {fileID: 8300000, guid: eb643cf6a540e4fb7ba7cebfbd1f563c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

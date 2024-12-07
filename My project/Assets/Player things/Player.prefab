@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootCooldown: 0.3
   boltPrefab: {fileID: 5532191630121420900, guid: 53fe00d4c2ecf48ed8e9ec229c2414d1, type: 3}
+  shootSound: {fileID: 0}
 --- !u!1 &2746802122879608517
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  animator: {fileID: 0}
 --- !u!95 &3793841439970820243
 Animator:
   serializedVersion: 5
@@ -515,6 +517,12 @@ MonoBehaviour:
   isGrounded: 1
   spawnFacingLeft: 0
   move_horizontal: 0
+  animator: {fileID: 0}
+  jumpSound: {fileID: 8300000, guid: 53c002dc6a7fa45168dc3dc033e17a50, type: 3}
+  landingSound: {fileID: 0}
+  playerDeathSound: {fileID: 0}
+  stepSound: {fileID: 0}
+  stepSoundInterval: 0.1
 --- !u!114 &5443846982982358320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +538,8 @@ MonoBehaviour:
   damagePopupPrefab: {fileID: 8313522738106398807, guid: b470f9308c3ee9d42888e1b89adb8828, type: 3}
   hp: 100
   maxHp: 100
+  takeDamageSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!114 &3179748138695725821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,6 +555,7 @@ MonoBehaviour:
   attackDelay: 0
   attackDuration: 0.2
   hitBoxObject: {fileID: 2746802122879608517}
+  swordSwingSound: {fileID: 0}
 --- !u!95 &8939594338564580739
 Animator:
   serializedVersion: 5
