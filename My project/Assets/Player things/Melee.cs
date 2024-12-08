@@ -10,15 +10,20 @@ public class Melee : MonoBehaviour
     private EdgeCollider2D hitbox;
 
     public AudioClip swordSwingSound;
+
+    public Player_script playerScript;
+
+    public bool hide_crossbow = false;
     private void Start()
     {
         //animator = GetComponent<Animator>();
         hitbox = hitBoxObject.GetComponent<EdgeCollider2D>();
+        playerScript = FindObjectOfType<Player_script>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) // Attack on "E" key press.
+        if (Input.GetKeyDown(KeyCode.E) && !playerScript.isDead) // Attack on "E" key press.
         {
             //animator.SetTrigger("MeleeAttack");
             Invoke("ActivateHitbox", attackDelay);
@@ -28,12 +33,14 @@ public class Melee : MonoBehaviour
 
     void ActivateHitbox()
     {
+        hide_crossbow = true;
         hitbox.gameObject.SetActive(true);
         Audio.Play(swordSwingSound);
     }
 
     void DeactivateHitbox()
     {
+        hide_crossbow = false;
         hitbox.gameObject.SetActive(false);
     }
 }

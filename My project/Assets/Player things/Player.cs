@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class Player_script : MonoBehaviour
     private Rigidbody2D rigid_body_player;
     public bool isGrounded = false; //Logic for this is in grounded_check_script
     private bool isGroundedCopy = false;
-    private bool isDead = false;
+    public bool isDead = false;
     private Health health;
     
     public bool spawnFacingLeft;
@@ -32,6 +33,10 @@ public class Player_script : MonoBehaviour
 
     public float stepSoundInterval = 0.1f;
     private float stepIntervalCopy;
+
+    private float timer = 0f;
+    private float take_damage_timer;
+    public float iframe_time = 0.5f;
     void Start()
     {
         health = GetComponent<Health>();
@@ -48,18 +53,35 @@ public class Player_script : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Projectile") health.TakeDamage(10); // test amount of damage
-        if (collision.collider.tag == "Boss") health.TakeDamage(30);
+        if (collision.collider.tag == "Projectile" && timer - take_damage_timer > iframe_time)
+        {
+            take_damage_timer = timer;
+            health.TakeDamage(10); // test amount of damage
+        }
+        if (collision.collider.tag == "Boss" && timer - take_damage_timer > iframe_time)
+        {
+            take_damage_timer = timer;
+            health.TakeDamage(30);
+        }
         //Audio.Play(playerTakeDamageSound);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Hurtbox")) health.TakeDamage(10);
-        if (other.CompareTag("Projectile")) health.TakeDamage(10);
+        if (other.CompareTag("Hurtbox") && timer - take_damage_timer > iframe_time)
+        {
+            take_damage_timer = timer;
+            health.TakeDamage(10);
+        }
+        if (other.CompareTag("Projectile") && timer - take_damage_timer > iframe_time)
+        {
+            take_damage_timer = timer;
+            health.TakeDamage(10);
+        }
         //Audio.Play(playerTakeDamageSound);
     }
     void Update()
     {
+        timer += Time.deltaTime;
         move_horizontal = Input.GetAxisRaw("Horizontal");
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
@@ -102,6 +124,8 @@ public class Player_script : MonoBehaviour
             if (!isDead)
                 Audio.Play(playerDeathSound);
             isDead = true;
+            rigid_body_player.velocity = Vector2.zero;
+
         }
         else if (move_horizontal == 0f && isGrounded)
         {
@@ -121,13 +145,16 @@ public class Player_script : MonoBehaviour
     }
     protected virtual void Flip()
     {
-        if (isFacingLeft)
+        if (!isDead)
         {
-            transform.localScale = facingLeft;
-        }
-        if (!isFacingLeft)
-        {
-            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+            if (isFacingLeft)
+            {
+                transform.localScale = facingLeft;
+            }
+            if (!isFacingLeft)
+            {
+                transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+            }
         }
     }
 }

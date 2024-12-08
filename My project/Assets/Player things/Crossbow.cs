@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Crossbow : MonoBehaviour
@@ -10,15 +11,34 @@ public class Crossbow : MonoBehaviour
     public AudioClip shootSound;
 
     private Camera cam;
+    public Player_script player_Script;
+
+    public SpriteRenderer sprite;
+    public Melee melee;
     
     private void Start()
     {
+        player_Script = FindObjectOfType<Player_script>();
         cooldownCopy = shootCooldown;
         cam = Camera.main;
+        sprite = GetComponent<SpriteRenderer>();
+        melee = FindObjectOfType<Melee>();
     }
 
     private void Update()
     {
+        if (melee.hide_crossbow)
+        {
+            sprite.enabled = false;
+        }
+        else
+        {
+            sprite.enabled = true;
+        }
+        if (player_Script.isDead)
+        {
+            Destroy(gameObject);
+        }
         if (cooldownCopy > 0) cooldownCopy -= Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && cooldownCopy <= 0)
