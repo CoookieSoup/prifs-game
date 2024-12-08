@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 1632360623557310660}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.24, y: -0.27, z: 0}
-  m_LocalScale: {x: 0.75251, y: 0.75251, z: 0}
+  m_LocalPosition: {x: 0.79, y: -0.10199, z: 0}
+  m_LocalScale: {x: 0.6988952, y: 0.6988952, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1172934059076474970}
@@ -49,6 +49,9 @@ MonoBehaviour:
   shootCooldown: 0.3
   boltPrefab: {fileID: 5532191630121420900, guid: 53fe00d4c2ecf48ed8e9ec229c2414d1, type: 3}
   shootSound: {fileID: 0}
+  player_Script: {fileID: 0}
+  sprite: {fileID: 0}
+  melee: {fileID: 0}
 --- !u!212 &7970529832717568362
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -90,12 +93,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: e2b16819cda2b4e4482aaf228c8fc453, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebc3666ca594f754384d69891f076fbd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.7500002, y: 3.7500002}
+  m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -568,6 +571,7 @@ MonoBehaviour:
   speed: 5
   jump_height: 11
   isGrounded: 1
+  isDead: 0
   spawnFacingLeft: 0
   move_horizontal: 0
   animator: {fileID: 0}
@@ -576,6 +580,7 @@ MonoBehaviour:
   playerDeathSound: {fileID: 0}
   stepSound: {fileID: 0}
   stepSoundInterval: 0.1
+  iframe_time: 0.5
 --- !u!114 &5443846982982358320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,6 +614,8 @@ MonoBehaviour:
   attackDuration: 0.2
   hitBoxObject: {fileID: 2746802122879608517}
   swordSwingSound: {fileID: 0}
+  playerScript: {fileID: 0}
+  hide_crossbow: 0
 --- !u!95 &8939594338564580739
 Animator:
   serializedVersion: 5
