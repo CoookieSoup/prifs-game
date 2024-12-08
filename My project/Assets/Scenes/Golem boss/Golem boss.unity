@@ -813,7 +813,7 @@ MonoBehaviour:
   damagePopupPrefab: {fileID: 8313522738106398807, guid: b470f9308c3ee9d42888e1b89adb8828, type: 3}
   hp: 0
   maxHp: 1000
-  takeDamageSound: {fileID: 0}
+  takeDamageSound: {fileID: 8300000, guid: 95aa6841f4580426fbde5576e49e63a9, type: 3}
   deathSound: {fileID: 0}
 --- !u!1 &1762655005
 GameObject:
@@ -1458,6 +1458,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1631998958}
     - target: {fileID: 9202785923614322767, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
+      propertyPath: stepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6ef9dcc8f4a97419dbb6c8d478fc6df0, type: 3}
+    - target: {fileID: 9202785923614322767, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
       propertyPath: landingSound
       value: 
       objectReference: {fileID: 8300000, guid: d4a9c0a8013e64b958ba4c625b635504, type: 3}
@@ -1465,6 +1469,10 @@ PrefabInstance:
       propertyPath: playerDeathSound
       value: 
       objectReference: {fileID: 8300000, guid: 3d4da29b5c64a4f50a2a7bce446799f4, type: 3}
+    - target: {fileID: 9202785923614322767, guid: 71f87f3e76a496f468e406697302cc70, type: 3}
+      propertyPath: stepSoundInterval
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

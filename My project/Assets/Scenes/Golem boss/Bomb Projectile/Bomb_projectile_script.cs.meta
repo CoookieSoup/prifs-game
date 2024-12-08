@@ -3,7 +3,12 @@ guid: 2e0824aaddeeab942b0d08820a5f03f6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bomb_projectile_rigidBody2D: {instanceID: 0}
+  - bomb_projectile_transform: {instanceID: 0}
+  - golem_script: {instanceID: 0}
+  - bouncy_projectile: {instanceID: 0}
+  - explodeSound: {fileID: 8300000, guid: 702d707e14b484ac9b28677cc2942702, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
