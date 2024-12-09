@@ -233,10 +233,9 @@ public class Golem_moveset : MonoBehaviour
         pillar_timer += Time.deltaTime;
         if (pillar_timer >= pillar_telegraph_spawn_timer && !have_pillar_telegraph_spawned)
         {
-            float weighted_vertical_spawn = Mathf.Min(Random.Range(-1.5f, 2f), Random.Range(-1.5f, 2f)); //It is benificial to spawn the platforms lower so that the player can ectually get on to them
+            float weighted_vertical_spawn = Mathf.Min(Random.Range(-1.5f, 2f), Random.Range(-1.5f, 2f)); 
             float weighted_hertical_spawn2 = Random.Range(-9f, 9f); //Horizontal variety
             float weighted_hertical_spawn1 = Random.Range(-9f, 9f);
-            //if (Mathf.Abs(weighted_hertical_spawn2) > Mathf.Abs(weighted_hertical_spawn1)) weighted_hertical_spawn1 = weighted_hertical_spawn2;
             random_pillar_spawn_coords = new Vector2(weighted_hertical_spawn1, weighted_vertical_spawn);
             var Telegraph_Pillar = Instantiate(telegraph_pillar, random_pillar_spawn_coords, transform.rotation);
             have_pillar_telegraph_spawned = true;
@@ -265,19 +264,6 @@ public class Golem_moveset : MonoBehaviour
     }
     void LogAttack()
     {
-        /*
-        Vector2 direction = (player_transform.position - golem_transform.position);
-        float distance = Vector2.Distance(golem_transform.position, player_transform.position);
-
-        RaycastHit2D hit = Physics2D.Raycast(golem_transform.position, direction);
-        if (hit.collider.CompareTag("Player"))
-        {
-            Debug.Log("Hit object: " + hit.collider.name);
-        }
-        Debug.DrawRay(golem_transform.position, direction);
-        */
-
-
         log_timer += Time.deltaTime;
         alternative_log_timer_phase2 += Time.deltaTime;
         if (log_timer >= 0.1f && log_timer <= 4f)
@@ -358,7 +344,7 @@ public class Golem_moveset : MonoBehaviour
             for (int i = -1; i < 2; i = i + 2)
             {
                 var Spiked_boulder = Instantiate(spiked_boulder, transform.position, transform.rotation);
-                Spiked_boulder.GetComponent<Spiked_boulder_script>().direction_start = i;   //On first contact the spiked boulder may not contact in the corner, this is used in spiked_boulder_script to resolve it
+                Spiked_boulder.GetComponent<Spiked_boulder_script>().direction_start = i;  
             }
         do_spawn_spiked_boulder = false;
     }
